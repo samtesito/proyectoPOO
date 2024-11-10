@@ -18,7 +18,17 @@ public class vistaTurista extends javax.swing.JFrame {
     public vistaTurista() {
         initComponents();
         lImgCard1.setIcon(new ImageIcon(new ImageIcon("src/recursos/monalisa.jpg").getImage().getScaledInstance(150, 194, Image.SCALE_DEFAULT)));
-        tTextCard1.setText("El retrato de Lisa Gherardini, esposa de Francesco del Giocondo,​ más conocido como La Gioconda");
+        tTextCard1.setText("El retrato de Lisa Gherardini, esposa de Francesco del Giocondo,​ más conocido como La Gioconda (La Joconde en francés) o Monna Lisa, es una obra pictórica del polímata renacentista florentino Leonardo da Vinci. Fue adquirida por el rey Francisco I de Francia a comienzos del siglo XVI y desde entonces es propiedad del Estado...");
+        lImgCardDetail.setIcon(new ImageIcon(new ImageIcon("src/recursos/monalisa.jpg").getImage().getScaledInstance(350, 492, Image.SCALE_DEFAULT)));
+        tTextCardDetail.setText("El retrato de Lisa Gherardini, esposa de Francesco del Giocondo,​ más conocido como La Gioconda (La Joconde en francés) o Monna Lisa, es una obra pictórica del polímata renacentista florentino Leonardo da Vinci. Fue adquirida por el rey Francisco I de Francia a comienzos del siglo XVI y desde entonces es propiedad del Estado francés. Se halla expuesta en el Museo del Louvre de París, siendo, sin duda, la «joya» de sus colecciones.\n" +
+"\n" +
+"Su nombre, La Gioconda (la Alegre, en castellano), deriva de la tesis más aceptada acerca de la identidad de la modelo: la esposa de Francesco Bartolomeo de Giocondo, que realmente se llamaba Lisa Gherardini, de donde viene su otro nombre: Monna (señora, en el italiano antiguo) Lisa. El Museo del Louvre acepta el título completo indicado al principio como el título original de la obra, aunque no reconoce la identidad de la modelo y tan solo la acepta como una hipótesis.\n" +
+"\n" +
+"Es un óleo sobre tabla de álamo de 79 × 53 cm, pintado entre 1503 y 1519,​ y retocado varias veces por el autor. Se considera el ejemplo más logrado de sfumato, técnica muy característica de Leonardo, si bien actualmente su colorido original es menos perceptible por el oscurecimiento de los barnices. El cuadro está protegido por múltiples sistemas de seguridad y ambientado a temperatura estable para su preservación óptima.​ Es revisado constantemente para verificar y prevenir su deterioro.\n" +
+"\n" +
+"Por medio de estudios históricos se ha determinado que la modelo podría ser una vecina de Leonardo, que podrían conocerse sus descendientes y que la modelo podría haber estado embarazada, por la forma de esconder que tienen sus manos. Pese a todas las suposiciones, las respuestas en firme a los varios interrogantes en torno a la obra de arte resultan francamente insuficientes, lo cual genera más curiosidad entre los admiradores del cuadro.\n" +
+"\n" +
+"La fama de esta pintura no se basa únicamente en la técnica empleada o en su belleza, sino también en los misterios que la rodean. Además, el robo que sufrió en 1911, las reproducciones realizadas, las múltiples obras de arte que se han inspirado en el cuadro y las parodias existentes contribuyen a convertir a La Gioconda en el cuadro más famoso del mundo, visitado por millones de personas anualmente.");
     }
 
     /**
@@ -33,10 +43,11 @@ public class vistaTurista extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         pTabs = new javax.swing.JTabbedPane();
         pTab1 = new javax.swing.JPanel();
-        Inner = new javax.swing.JPanel();
+        InnerT1 = new javax.swing.JPanel();
         pCard1 = new javax.swing.JPanel();
         lImgCard1 = new javax.swing.JLabel();
         lTitlecard1 = new javax.swing.JLabel();
+        tTextCard1 = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -44,6 +55,13 @@ public class vistaTurista extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         bPrev = new javax.swing.JButton();
         bNext = new javax.swing.JButton();
+        pTab2 = new javax.swing.JPanel();
+        InnerT2 = new javax.swing.JPanel();
+        pCardDetail = new javax.swing.JPanel();
+        lImgCardDetail = new javax.swing.JLabel();
+        lTitleCardDetail = new javax.swing.JLabel();
+        tTextCardDetail = new javax.swing.JTextArea();
+        bBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Turista");
@@ -60,13 +78,26 @@ public class vistaTurista extends javax.swing.JFrame {
 
         pTab1.setPreferredSize(new java.awt.Dimension(1280, 1742));
 
-        Inner.setPreferredSize(new java.awt.Dimension(1280, 1730));
+        InnerT1.setPreferredSize(new java.awt.Dimension(1280, 1730));
 
         pCard1.setBackground(new java.awt.Color(204, 204, 204));
+        pCard1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pCard1MouseClicked(evt);
+            }
+        });
 
         lTitlecard1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lTitlecard1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lTitlecard1.setText("jLabel2");
+        lTitlecard1.setText("La Gioconda");
+
+        tTextCard1.setEditable(false);
+        tTextCard1.setColumns(20);
+        tTextCard1.setLineWrap(true);
+        tTextCard1.setRows(5);
+        tTextCard1.setTabSize(2);
+        tTextCard1.setWrapStyleWord(true);
+        tTextCard1.setFocusable(false);
 
         javax.swing.GroupLayout pCard1Layout = new javax.swing.GroupLayout(pCard1);
         pCard1.setLayout(pCard1Layout);
@@ -75,8 +106,12 @@ public class vistaTurista extends javax.swing.JFrame {
             .addGroup(pCard1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lImgCard1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lTitlecard1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lTitlecard1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pCard1Layout.createSequentialGroup()
+                        .addComponent(tTextCard1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 2, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pCard1Layout.setVerticalGroup(
@@ -87,7 +122,8 @@ public class vistaTurista extends javax.swing.JFrame {
                     .addComponent(lImgCard1, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
                     .addGroup(pCard1Layout.createSequentialGroup()
                         .addComponent(lTitlecard1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tTextCard1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -150,48 +186,48 @@ public class vistaTurista extends javax.swing.JFrame {
 
         bNext.setText("Siguiente");
 
-        javax.swing.GroupLayout InnerLayout = new javax.swing.GroupLayout(Inner);
-        Inner.setLayout(InnerLayout);
-        InnerLayout.setHorizontalGroup(
-            InnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(InnerLayout.createSequentialGroup()
+        javax.swing.GroupLayout InnerT1Layout = new javax.swing.GroupLayout(InnerT1);
+        InnerT1.setLayout(InnerT1Layout);
+        InnerT1Layout.setHorizontalGroup(
+            InnerT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InnerT1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(InnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(InnerLayout.createSequentialGroup()
-                        .addGroup(InnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(InnerT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(InnerT1Layout.createSequentialGroup()
+                        .addGroup(InnerT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(pCard1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(InnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(InnerLayout.createSequentialGroup()
+                        .addGroup(InnerT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(InnerT1Layout.createSequentialGroup()
                                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(InnerLayout.createSequentialGroup()
+                            .addGroup(InnerT1Layout.createSequentialGroup()
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(InnerLayout.createSequentialGroup()
+                    .addGroup(InnerT1Layout.createSequentialGroup()
                         .addComponent(bPrev)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bNext)))
                 .addGap(0, 30, Short.MAX_VALUE))
         );
-        InnerLayout.setVerticalGroup(
-            InnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(InnerLayout.createSequentialGroup()
+        InnerT1Layout.setVerticalGroup(
+            InnerT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InnerT1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(InnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(InnerT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(InnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(InnerT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(InnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(InnerT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bPrev)
                     .addComponent(bNext))
                 .addContainerGap(97, Short.MAX_VALUE))
@@ -201,16 +237,103 @@ public class vistaTurista extends javax.swing.JFrame {
         pTab1.setLayout(pTab1Layout);
         pTab1Layout.setHorizontalGroup(
             pTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Inner, javax.swing.GroupLayout.DEFAULT_SIZE, 1274, Short.MAX_VALUE)
+            .addComponent(InnerT1, javax.swing.GroupLayout.DEFAULT_SIZE, 1274, Short.MAX_VALUE)
         );
         pTab1Layout.setVerticalGroup(
             pTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pTab1Layout.createSequentialGroup()
-                .addComponent(Inner, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(InnerT1, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pTabs.addTab("tab1", pTab1);
+
+        InnerT2.setPreferredSize(new java.awt.Dimension(1280, 1730));
+
+        pCardDetail.setBackground(new java.awt.Color(204, 204, 204));
+
+        lTitleCardDetail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lTitleCardDetail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lTitleCardDetail.setText("La Gioconda");
+
+        tTextCardDetail.setEditable(false);
+        tTextCardDetail.setColumns(20);
+        tTextCardDetail.setLineWrap(true);
+        tTextCardDetail.setRows(5);
+        tTextCardDetail.setTabSize(2);
+        tTextCardDetail.setWrapStyleWord(true);
+        tTextCardDetail.setFocusable(false);
+
+        bBack.setText("Atras");
+        bBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBackActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pCardDetailLayout = new javax.swing.GroupLayout(pCardDetail);
+        pCardDetail.setLayout(pCardDetailLayout);
+        pCardDetailLayout.setHorizontalGroup(
+            pCardDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pCardDetailLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(lImgCardDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pCardDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lTitleCardDetail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tTextCardDetail)
+                    .addGroup(pCardDetailLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bBack, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        pCardDetailLayout.setVerticalGroup(
+            pCardDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pCardDetailLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pCardDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lImgCardDetail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pCardDetailLayout.createSequentialGroup()
+                        .addComponent(lTitleCardDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tTextCardDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bBack)
+                        .addGap(0, 16, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout InnerT2Layout = new javax.swing.GroupLayout(InnerT2);
+        InnerT2.setLayout(InnerT2Layout);
+        InnerT2Layout.setHorizontalGroup(
+            InnerT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InnerT2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pCardDetail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        InnerT2Layout.setVerticalGroup(
+            InnerT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InnerT2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pCardDetail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout pTab2Layout = new javax.swing.GroupLayout(pTab2);
+        pTab2.setLayout(pTab2Layout);
+        pTab2Layout.setHorizontalGroup(
+            pTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(InnerT2, javax.swing.GroupLayout.DEFAULT_SIZE, 1274, Short.MAX_VALUE)
+        );
+        pTab2Layout.setVerticalGroup(
+            pTab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pTab2Layout.createSequentialGroup()
+                .addComponent(InnerT2, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        pTabs.addTab("tab2", pTab2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -234,6 +357,18 @@ public class vistaTurista extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void pCard1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pCard1MouseClicked
+        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+            evt.consume();
+            pTabs.setSelectedIndex(1);
+        }
+
+    }//GEN-LAST:event_pCard1MouseClicked
+
+    private void bBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBackActionPerformed
+        pTabs.setSelectedIndex(0);
+    }//GEN-LAST:event_bBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,7 +406,9 @@ public class vistaTurista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Inner;
+    private javax.swing.JPanel InnerT1;
+    private javax.swing.JPanel InnerT2;
+    private javax.swing.JButton bBack;
     private javax.swing.JButton bNext;
     private javax.swing.JButton bPrev;
     private javax.swing.JLabel jLabel1;
@@ -281,9 +418,15 @@ public class vistaTurista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel lImgCard1;
+    private javax.swing.JLabel lImgCardDetail;
+    private javax.swing.JLabel lTitleCardDetail;
     private javax.swing.JLabel lTitlecard1;
     private javax.swing.JPanel pCard1;
+    private javax.swing.JPanel pCardDetail;
     private javax.swing.JPanel pTab1;
+    private javax.swing.JPanel pTab2;
     private javax.swing.JTabbedPane pTabs;
+    private javax.swing.JTextArea tTextCard1;
+    private javax.swing.JTextArea tTextCardDetail;
     // End of variables declaration//GEN-END:variables
 }
