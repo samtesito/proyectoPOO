@@ -104,6 +104,11 @@ public class InicioDeSesion extends javax.swing.JFrame {
 
         IngresarComoTurista.setBackground(new java.awt.Color(176, 176, 176));
         IngresarComoTurista.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        IngresarComoTurista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                IngresarComoTuristaMouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -212,6 +217,15 @@ public class InicioDeSesion extends javax.swing.JFrame {
     private void NombreDeUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreDeUsuario1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NombreDeUsuario1ActionPerformed
+
+    private void IngresarComoTuristaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IngresarComoTuristaMouseClicked
+        this.dispose();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new vistaTurista().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_IngresarComoTuristaMouseClicked
 
     /**
      * @param args the command line arguments
