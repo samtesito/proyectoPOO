@@ -35,9 +35,9 @@ public class InicioDeSesion extends javax.swing.JFrame {
         IngresarComoTurista = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         NombreDeUsuario = new javax.swing.JTextField();
-        NombreDeUsuario1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -131,15 +131,10 @@ public class InicioDeSesion extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
+        NombreDeUsuario.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         NombreDeUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NombreDeUsuarioActionPerformed(evt);
-            }
-        });
-
-        NombreDeUsuario1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NombreDeUsuario1ActionPerformed(evt);
             }
         });
 
@@ -149,7 +144,10 @@ public class InicioDeSesion extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Contrasenia");
+        jLabel2.setText("Contraseña");
+
+        jPasswordField1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jPasswordField1.setToolTipText("");
 
         javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
         Fondo.setLayout(FondoLayout);
@@ -172,9 +170,9 @@ public class InicioDeSesion extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32)
-                        .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NombreDeUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NombreDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(NombreDeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+                            .addComponent(jPasswordField1))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         FondoLayout.setVerticalGroup(
@@ -187,9 +185,9 @@ public class InicioDeSesion extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addGap(67, 67, 67)
                 .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NombreDeUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
                 .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(IngresarComoTurista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(IngresarComoAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -213,10 +211,6 @@ public class InicioDeSesion extends javax.swing.JFrame {
     private void NombreDeUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreDeUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NombreDeUsuarioActionPerformed
-
-    private void NombreDeUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreDeUsuario1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NombreDeUsuario1ActionPerformed
 
     private void IngresarComoTuristaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IngresarComoTuristaMouseClicked
         this.dispose();
@@ -268,12 +262,12 @@ public class InicioDeSesion extends javax.swing.JFrame {
     private javax.swing.JPanel IngresarComoAdmin;
     private javax.swing.JPanel IngresarComoTurista;
     private javax.swing.JTextField NombreDeUsuario;
-    private javax.swing.JTextField NombreDeUsuario1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
 }
