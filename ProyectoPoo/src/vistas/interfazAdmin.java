@@ -128,7 +128,6 @@ public class interfazAdmin extends javax.swing.JFrame {
         CATALOG.setBackground(new java.awt.Color(204, 204, 204));
 
         jPanel1.setBackground(new java.awt.Color(255, 51, 51));
-
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel5.setText("La vara rota");
@@ -157,7 +156,6 @@ public class interfazAdmin extends javax.swing.JFrame {
         );
 
         jPanel2.setBackground(new java.awt.Color(102, 255, 102));
-
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setText("La Gioconda");
@@ -187,7 +185,6 @@ public class interfazAdmin extends javax.swing.JFrame {
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 51, 51));
-
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setText("The Starry Night");
