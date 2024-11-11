@@ -17,6 +17,13 @@ public class vistaTurista extends javax.swing.JFrame {
      */
     public vistaTurista() {
         initComponents();
+        pTabs.setUI(new javax.swing.plaf.basic.BasicTabbedPaneUI() {
+            @Override
+            protected int calculateTabAreaHeight(int tabPlacement, int horizRunCount, int maxTabHeight) {
+                return 0;
+            }
+        });
+
         lLogo.setIcon(new ImageIcon(new ImageIcon("src/recursos/Logo.jfif").getImage().getScaledInstance(108, 108, Image.SCALE_DEFAULT)));
         lImgCard1.setIcon(new ImageIcon(new ImageIcon("src/recursos/monalisa.jpg").getImage().getScaledInstance(150, 194, Image.SCALE_DEFAULT)));
         tTextCard1.setText("El retrato de Lisa Gherardini, esposa de Francesco del Giocondo,​ más conocido como La Gioconda (La Joconde en francés) o Monna Lisa, es una obra pictórica del polímata renacentista florentino Leonardo da Vinci. Fue adquirida por el rey Francisco I de Francia a comienzos del siglo XVI y desde entonces es propiedad del Estado...");
@@ -106,7 +113,7 @@ public class vistaTurista extends javax.swing.JFrame {
                 .addGroup(pBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(685, Short.MAX_VALUE))
         );
         pBannerLayout.setVerticalGroup(
             pBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,7 +272,7 @@ public class vistaTurista extends javax.swing.JFrame {
                         .addComponent(bPrev)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bNext)))
-                .addGap(0, 30, Short.MAX_VALUE))
+                .addGap(0, 24, Short.MAX_VALUE))
         );
         InnerT1Layout.setVerticalGroup(
             InnerT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,7 +298,7 @@ public class vistaTurista extends javax.swing.JFrame {
         pTab1.setLayout(pTab1Layout);
         pTab1Layout.setHorizontalGroup(
             pTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(InnerT1, javax.swing.GroupLayout.DEFAULT_SIZE, 1274, Short.MAX_VALUE)
+            .addComponent(InnerT1, javax.swing.GroupLayout.DEFAULT_SIZE, 1268, Short.MAX_VALUE)
         );
         pTab1Layout.setVerticalGroup(
             pTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,17 +405,19 @@ public class vistaTurista extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pBanner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pTabs, javax.swing.GroupLayout.DEFAULT_SIZE, 1274, Short.MAX_VALUE))
-            .addComponent(pBanner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pTabs, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pBanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pTabs, javax.swing.GroupLayout.PREFERRED_SIZE, 572, Short.MAX_VALUE))
+                .addComponent(pTabs, javax.swing.GroupLayout.PREFERRED_SIZE, 566, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
