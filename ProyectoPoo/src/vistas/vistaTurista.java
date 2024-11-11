@@ -17,7 +17,7 @@ public class vistaTurista extends javax.swing.JFrame {
      */
     public vistaTurista() {
         initComponents();
-        lLogo.setIcon(new ImageIcon(new ImageIcon("src/recursos/Logo.jfif").getImage().getScaledInstance(144, 130, Image.SCALE_DEFAULT)));
+        lLogo.setIcon(new ImageIcon(new ImageIcon("src/recursos/Logo.jfif").getImage().getScaledInstance(108, 108, Image.SCALE_DEFAULT)));
         lImgCard1.setIcon(new ImageIcon(new ImageIcon("src/recursos/monalisa.jpg").getImage().getScaledInstance(150, 194, Image.SCALE_DEFAULT)));
         tTextCard1.setText("El retrato de Lisa Gherardini, esposa de Francesco del Giocondo,​ más conocido como La Gioconda (La Joconde en francés) o Monna Lisa, es una obra pictórica del polímata renacentista florentino Leonardo da Vinci. Fue adquirida por el rey Francisco I de Francia a comienzos del siglo XVI y desde entonces es propiedad del Estado...");
         lImgCardDetail.setIcon(new ImageIcon(new ImageIcon("src/recursos/monalisa.jpg").getImage().getScaledInstance(350, 492, Image.SCALE_DEFAULT)));
@@ -71,7 +71,6 @@ public class vistaTurista extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Turista");
         setName("Turista"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
 
@@ -81,17 +80,11 @@ public class vistaTurista extends javax.swing.JFrame {
         pLogo.setLayout(pLogoLayout);
         pLogoLayout.setHorizontalGroup(
             pLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pLogoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(lLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
         );
         pLogoLayout.setVerticalGroup(
             pLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pLogoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(lLogo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
         );
 
         jLabel6.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
@@ -107,8 +100,9 @@ public class vistaTurista extends javax.swing.JFrame {
         pBannerLayout.setHorizontalGroup(
             pBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pBannerLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addComponent(pLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98)
+                .addGap(32, 32, 32)
                 .addGroup(pBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -116,13 +110,17 @@ public class vistaTurista extends javax.swing.JFrame {
         );
         pBannerLayout.setVerticalGroup(
             pBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pBannerLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGroup(pBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pBannerLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pBannerLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(pLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pTabs.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
@@ -131,19 +129,24 @@ public class vistaTurista extends javax.swing.JFrame {
 
         InnerT1.setPreferredSize(new java.awt.Dimension(1280, 1730));
 
-        pCard1.setBackground(new java.awt.Color(204, 204, 204));
+        pCard1.setBackground(new java.awt.Color(176, 176, 176));
         pCard1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pCard1MouseClicked(evt);
             }
         });
 
-        lTitlecard1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lImgCard1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        lTitlecard1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lTitlecard1.setForeground(new java.awt.Color(255, 255, 255));
         lTitlecard1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lTitlecard1.setText("La Gioconda");
 
         tTextCard1.setEditable(false);
+        tTextCard1.setBackground(new java.awt.Color(255, 255, 255));
         tTextCard1.setColumns(20);
+        tTextCard1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tTextCard1.setLineWrap(true);
         tTextCard1.setRows(5);
         tTextCard1.setTabSize(2);
@@ -301,14 +304,17 @@ public class vistaTurista extends javax.swing.JFrame {
 
         InnerT2.setPreferredSize(new java.awt.Dimension(1280, 1730));
 
-        pCardDetail.setBackground(new java.awt.Color(204, 204, 204));
+        pCardDetail.setBackground(new java.awt.Color(176, 176, 176));
 
-        lTitleCardDetail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lTitleCardDetail.setBackground(new java.awt.Color(255, 255, 255));
+        lTitleCardDetail.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lTitleCardDetail.setForeground(new java.awt.Color(255, 255, 255));
         lTitleCardDetail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lTitleCardDetail.setText("La Gioconda");
 
         tTextCardDetail.setEditable(false);
         tTextCardDetail.setColumns(20);
+        tTextCardDetail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tTextCardDetail.setLineWrap(true);
         tTextCardDetail.setRows(5);
         tTextCardDetail.setTabSize(2);
@@ -349,7 +355,7 @@ public class vistaTurista extends javax.swing.JFrame {
                     .addGroup(pCardDetailLayout.createSequentialGroup()
                         .addComponent(lTitleCardDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tTextCardDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tTextCardDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bBack)
                         .addGap(0, 16, Short.MAX_VALUE)))
@@ -370,7 +376,7 @@ public class vistaTurista extends javax.swing.JFrame {
             .addGroup(InnerT2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pCardDetail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pTab2Layout = new javax.swing.GroupLayout(pTab2);
@@ -394,9 +400,8 @@ public class vistaTurista extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pTabs, javax.swing.GroupLayout.DEFAULT_SIZE, 1274, Short.MAX_VALUE)
-                    .addComponent(pBanner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(pTabs, javax.swing.GroupLayout.DEFAULT_SIZE, 1274, Short.MAX_VALUE))
+            .addComponent(pBanner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
