@@ -79,6 +79,11 @@ public class InicioDeSesion extends javax.swing.JFrame {
 
         IngresarComoAdmin.setBackground(new java.awt.Color(176, 176, 176));
         IngresarComoAdmin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        IngresarComoAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                IngresarComoAdminMouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -212,13 +217,12 @@ public class InicioDeSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_NombreDeUsuarioActionPerformed
 
     private void IngresarComoTuristaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IngresarComoTuristaMouseClicked
-        this.dispose();
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new vistaTurista().setVisible(true);
-            }
-        });
+        
     }//GEN-LAST:event_IngresarComoTuristaMouseClicked
+
+    private void IngresarComoAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IngresarComoAdminMouseClicked
+        
+    }//GEN-LAST:event_IngresarComoAdminMouseClicked
 
     /**
      * @param args the command line arguments
