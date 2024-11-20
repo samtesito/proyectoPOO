@@ -457,7 +457,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="pCardDetail" max="32767" attributes="0"/>
+                          <Component id="pCardDetail" pref="543" max="32767" attributes="0"/>
                           <EmptySpace pref="13" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -473,19 +473,14 @@
                               <Component id="lImgCardDetail" min="-2" pref="350" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                              <Component id="tTextCardDetail" min="-2" pref="860" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="321" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="bBack" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="348" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                      <Component id="tTextCardDetail" min="-2" pref="860" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="321" max="-2" attributes="0"/>
                                       <Component id="lTitleCardDetail2" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="bBack" min="-2" pref="147" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
@@ -509,14 +504,14 @@
                               <Component id="lTitleCardDetail" min="-2" pref="48" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lTitleCardDetail3" min="-2" pref="48" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="tTextCardDetail" min="-2" pref="348" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lTitleCardDetail2" min="-2" pref="48" max="-2" attributes="0"/>
-                                  <Component id="bBack" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tTextCardDetail" alignment="0" min="-2" pref="396" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="15" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                              <Component id="bBack" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Component id="lImgCardDetail" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -551,6 +546,14 @@
                         <Property name="focusable" type="boolean" value="false"/>
                       </Properties>
                     </Component>
+                    <Component class="javax.swing.JButton" name="bBack">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Atras"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBackActionPerformed"/>
+                      </Events>
+                    </Component>
                     <Component class="javax.swing.JLabel" name="lTitleCardDetail2">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -573,11 +576,6 @@
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="text" type="java.lang.String" value="Por Leonardo da Vinci"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="bBack">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Atras"/>
                       </Properties>
                     </Component>
                   </SubComponents>

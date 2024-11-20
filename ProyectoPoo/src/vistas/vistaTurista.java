@@ -17,12 +17,6 @@ public class vistaTurista extends javax.swing.JFrame {
      */
     public vistaTurista() {
         initComponents();
-        pTabs.setUI(new javax.swing.plaf.basic.BasicTabbedPaneUI() {
-            @Override
-            protected int calculateTabAreaHeight(int tabPlacement, int horizRunCount, int maxTabHeight) {
-                return 0;
-            }
-        });
         lLogo.setIcon(new ImageIcon(new ImageIcon("src/recursos/Logo.jfif").getImage().getScaledInstance(108, 108, Image.SCALE_DEFAULT)));
         lImgCard1.setIcon(new ImageIcon(new ImageIcon("src/recursos/monalisa.jpg").getImage().getScaledInstance(150, 194, Image.SCALE_DEFAULT)));
         tTextCard1.setText("El retrato de Lisa Gherardini, esposa de Francesco del Giocondo,​ más conocido como La Gioconda (La Joconde en francés) o Monna Lisa, es una obra pictórica del polímata renacentista florentino Leonardo da Vinci. Fue adquirida por el rey Francisco I de Francia a comienzos del siglo XVI y desde entonces es propiedad del Estado...");
@@ -72,9 +66,9 @@ public class vistaTurista extends javax.swing.JFrame {
         lImgCardDetail = new javax.swing.JLabel();
         lTitleCardDetail = new javax.swing.JLabel();
         tTextCardDetail = new javax.swing.JTextArea();
+        bBack = new javax.swing.JButton();
         lTitleCardDetail2 = new javax.swing.JLabel();
         lTitleCardDetail3 = new javax.swing.JLabel();
-        bBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Turista");
@@ -326,6 +320,13 @@ public class vistaTurista extends javax.swing.JFrame {
         tTextCardDetail.setWrapStyleWord(true);
         tTextCardDetail.setFocusable(false);
 
+        bBack.setText("Atras");
+        bBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBackActionPerformed(evt);
+            }
+        });
+
         lTitleCardDetail2.setBackground(new java.awt.Color(255, 255, 255));
         lTitleCardDetail2.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         lTitleCardDetail2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -336,8 +337,6 @@ public class vistaTurista extends javax.swing.JFrame {
         lTitleCardDetail3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lTitleCardDetail3.setText("Por Leonardo da Vinci");
 
-        bBack.setText("Atras");
-
         javax.swing.GroupLayout pCardDetailLayout = new javax.swing.GroupLayout(pCardDetail);
         pCardDetail.setLayout(pCardDetailLayout);
         pCardDetailLayout.setHorizontalGroup(
@@ -346,16 +345,13 @@ public class vistaTurista extends javax.swing.JFrame {
                 .addComponent(lImgCardDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pCardDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pCardDetailLayout.createSequentialGroup()
-                        .addGroup(pCardDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pCardDetailLayout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(tTextCardDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 860, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(321, 321, 321))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pCardDetailLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bBack)
-                                .addGap(348, 348, 348)))
+                        .addGap(29, 29, 29)
+                        .addComponent(tTextCardDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 860, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(321, 321, 321)
                         .addComponent(lTitleCardDetail2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pCardDetailLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bBack, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pCardDetailLayout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addGroup(pCardDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,12 +369,12 @@ public class vistaTurista extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lTitleCardDetail3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(tTextCardDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pCardDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lTitleCardDetail2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bBack))
-                .addContainerGap(15, Short.MAX_VALUE))
+                    .addComponent(tTextCardDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56)
+                .addComponent(bBack)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(lImgCardDetail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -395,7 +391,7 @@ public class vistaTurista extends javax.swing.JFrame {
             InnerT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InnerT2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pCardDetail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pCardDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 543, Short.MAX_VALUE)
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
@@ -441,6 +437,10 @@ public class vistaTurista extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_pCard1MouseClicked
+
+    private void bBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBackActionPerformed
+        pTabs.setSelectedIndex(0);
+    }//GEN-LAST:event_bBackActionPerformed
 
     /**
      * @param args the command line arguments
