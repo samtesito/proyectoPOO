@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package vistas;
+package vista;
 
 /**
  *
@@ -68,13 +68,17 @@ public class interfazAdmin extends javax.swing.JFrame {
         separador2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
 
         background.setBackground(new java.awt.Color(153, 153, 153));
+        background.setMinimumSize(new java.awt.Dimension(1280, 720));
+        background.setPreferredSize(new java.awt.Dimension(1280, 720));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelSuperior.setBackground(new java.awt.Color(102, 102, 102));
+        panelSuperior.setPreferredSize(new java.awt.Dimension(1280, 167));
 
         pageName.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         pageName.setForeground(new java.awt.Color(255, 255, 255));
@@ -102,7 +106,7 @@ public class interfazAdmin extends javax.swing.JFrame {
                 .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(panelSuperiorLayout.createSequentialGroup()
                 .addComponent(pageName, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 233, Short.MAX_VALUE))
+                .addGap(0, 683, Short.MAX_VALUE))
         );
         panelSuperiorLayout.setVerticalGroup(
             panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,12 +118,14 @@ public class interfazAdmin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        background.add(panelSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 160));
+        background.add(panelSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 160));
 
         pestanas.setBackground(new java.awt.Color(204, 204, 204));
         pestanas.setForeground(new java.awt.Color(204, 204, 204));
 
         CATALOG.setBackground(new java.awt.Color(204, 204, 204));
+        CATALOG.setMinimumSize(new java.awt.Dimension(1010, 0));
+        CATALOG.setPreferredSize(new java.awt.Dimension(1010, 582));
 
         jPanel1.setBackground(new java.awt.Color(255, 51, 51));
 
@@ -273,6 +279,7 @@ public class interfazAdmin extends javax.swing.JFrame {
         pestanas.addTab("tab1", CATALOG);
 
         MATERIALS.setBackground(new java.awt.Color(204, 204, 204));
+        MATERIALS.setMinimumSize(new java.awt.Dimension(1010, 0));
 
         jPanel4.setBackground(new java.awt.Color(255, 51, 51));
 
@@ -452,6 +459,8 @@ public class interfazAdmin extends javax.swing.JFrame {
 
         pestanas.addTab("tab1", MATERIALS);
 
+        jPanel17.setMinimumSize(new java.awt.Dimension(1010, 0));
+
         jPanel18.setBackground(new java.awt.Color(255, 204, 204));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
@@ -593,7 +602,7 @@ public class interfazAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -644,6 +653,8 @@ public class interfazAdmin extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(interfazAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
