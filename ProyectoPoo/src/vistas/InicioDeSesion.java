@@ -41,7 +41,6 @@ public class InicioDeSesion extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
 
         Fondo.setBackground(new java.awt.Color(255, 242, 223));
@@ -64,7 +63,6 @@ public class InicioDeSesion extends javax.swing.JFrame {
         Banner.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 436, 36));
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/glasses.png"))); // NOI18N
-        jLabelLogo.setPreferredSize(new java.awt.Dimension(125, 125));
         Banner.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
         jLabelLogo.getAccessibleContext().setAccessibleName("");
 

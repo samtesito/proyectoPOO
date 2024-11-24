@@ -4,13 +4,17 @@
  */
 package controladora;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import vistas.InicioDeSesion;
-import vistas.Resultado;
-import vistas.Start;
-import vistas.InterfazAdmin;
-import vistas.vistaJuegoPreguntas;
+import vistas.*;
+import modelo.JsonConector;
+import modelo.FileConector;
+import java.util.List;
+import modelo.Pregunta;
+import com.google.gson.*;
+import java.util.HashMap;
 
 /**
  *
@@ -22,12 +26,25 @@ public class vistaManagement{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Gson gson = new Gson();
         String[] mantequilla = {"¿El cielo es azul?", "¿De qué color es una naranja?", "Pistacho", "Garbanzo"};
         modelo.globalAccess.listaDePreguntas = new ArrayList<modelo.Pregunta>();
-        modelo.globalAccess.listaDePreguntas.add(new modelo.Pregunta("¿de qué color son las naranjas?",mantequilla,2,350.15));
-        modelo.globalAccess.listaDePreguntas.add(new modelo.Pregunta("¿de qué tamanio es Berlin?",mantequilla,1,350.15));
-        modelo.globalAccess.listaDePreguntas.add(new modelo.Pregunta("¿de qué especie es Nemo",mantequilla,3,350.15));
-        modelo.globalAccess.listaDePreguntas.add(new modelo.Pregunta("¿Imperio mas grande de la edad media?",mantequilla,0,350.15));
+        ArrayList<Object> lTemp = new ArrayList<Object>();
+        JsonConector<modelo.Pregunta> jConector = new JsonConector();
+        FileConector fConector = new FileConector();
+        //modelo.globalAccess.listaDePreguntas.add(new modelo.Pregunta("¿de qué color son las naranjas?",mantequilla,2));
+        //modelo.globalAccess.listaDePreguntas.add(new modelo.Pregunta("¿de qué tamanio es Berlin?",mantequilla,1));
+        //modelo.globalAccess.listaDePreguntas.add(new modelo.Pregunta("¿de qué especie es Nemo",mantequilla,3));
+        //modelo.globalAccess.listaDePreguntas.add(new modelo.Pregunta("¿Imperio mas grande de la edad media?",mantequilla,0));
+        lTemp.addAll(jConector.ReadJson(fConector.readFPregunta()));
+        
+        
+        for(Object pregunta : lTemp){
+            JsonElement jsonElement = gson.toJsonTree(pregunta);
+            modelo.globalAccess.listaDePreguntas.add(gson.fromJson(jsonElement, Pregunta.class));
+        }
+        
+        
         loadStart();
     }
     

@@ -4,6 +4,7 @@
  */
 package modelo;
 
+
 /**
  *
  * @author samue
@@ -13,13 +14,38 @@ public class Pregunta {
     private String enunciado;
     private String[] opciones;
     private int respuestacorrecta;
-    private double porcentajedeacierto;
+    private int usos;
+    private int aciertos;
 
-    public Pregunta(String enunciado, String[] opciones, int respuestacorrecta, double porcentajedeacierto) {
+    public Pregunta(String enunciado, String[] opciones, int respuestacorrecta, int usos, int aciertos ) {
         this.enunciado = enunciado;
         this.opciones = opciones;
         this.respuestacorrecta = respuestacorrecta;
-        this.porcentajedeacierto = porcentajedeacierto;
+        this.usos = usos;
+        this.aciertos = aciertos;
+    }
+    public Pregunta(String enunciado, String[] opciones, int respuestacorrecta) {
+        this.enunciado = enunciado;
+        this.opciones = opciones;
+        this.respuestacorrecta = respuestacorrecta;
+        this.usos = 0;
+        this.aciertos = 0;
+    }
+
+    public int getUsos() {
+        return usos;
+    }
+
+    public void setUsos(int usos) {
+        this.usos = usos;
+    }
+
+    public int getAciertos() {
+        return aciertos;
+    }
+
+    public void setAciertos(int aciertos) {
+        this.aciertos = aciertos;
     }
     
     public String getEnunciado() {
@@ -47,10 +73,10 @@ public class Pregunta {
     }
     
     public double getPorcentajedeacierto(){
-        return porcentajedeacierto;
-    }
-    
-    public void setPorcentajedeacierto(double porcentajedeacierto){
-        this.porcentajedeacierto = porcentajedeacierto;
+        if (this.usos >0) {
+            return aciertos/usos;
+        }else{
+            return 0;
+        }
     }
 }

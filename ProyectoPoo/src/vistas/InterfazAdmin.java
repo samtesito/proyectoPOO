@@ -5,6 +5,12 @@
 package vistas;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.JLabel;
+import javax.swing.table.JTableHeader;
+import java.awt.Font;
+import java.awt.Color;
+
 
 /**
  *
@@ -103,7 +109,6 @@ public class InterfazAdmin extends javax.swing.JFrame {
             }
         });
         Banner.add(jButtonAgregarPregunta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 50, 170, 48));
-        jButtonAgregarPregunta1.getAccessibleContext().setAccessibleName("Volver al inicio");
 
         jPaneFondo.add(Banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -118,7 +123,6 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
         jTablePreguntas.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTablePreguntas.setForeground(new java.awt.Color(123, 58, 0));
-        jTablePreguntas.setModel(controladora.vistaManagement.setModeloTablaPreguntas());
         jTablePreguntas.setRowHeight(40);
         jTablePreguntas.setRowSelectionAllowed(false);
         jTablePreguntas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -409,9 +413,27 @@ public class InterfazAdmin extends javax.swing.JFrame {
     private void menu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu1MouseClicked
         pestanas.setSelectedIndex(0);
         jTablePreguntas.setModel(controladora.vistaManagement.setModeloTablaPreguntas());
+        JTableHeader tableHeader = jTablePreguntas.getTableHeader();
+        Font headerFont = new Font("Arial", Font.BOLD, 18);
+        float[] hsbColor = new float[3];
+        Color.RGBtoHSB(163, 58, 0, hsbColor);
+        tableHeader.setForeground(Color.getHSBColor(hsbColor[0],hsbColor[1],hsbColor[2]));
+        tableHeader.setFont(headerFont);
+        
+        
+        jTablePreguntas.getColumnModel().getColumn(0).setPreferredWidth(40);
+        jTablePreguntas.getColumnModel().getColumn(1).setPreferredWidth(800);
+        jTablePreguntas.getColumnModel().getColumn(2).setPreferredWidth(40);
+        jTablePreguntas.setAutoResizeMode(jTablePreguntas.AUTO_RESIZE_LAST_COLUMN);
         jTablePreguntas.setRowHeight(20);
         jScrollPanePreguntas.setVisible(true);
         jTablePreguntas.setVisible(true);
+        
+        
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        jTablePreguntas.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        
     }//GEN-LAST:event_menu1MouseClicked
 
     private void menu1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu1MouseMoved
