@@ -10,6 +10,13 @@ import javax.swing.JLabel;
 import javax.swing.table.JTableHeader;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.JOptionPane;
+import modelo.Pregunta;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 
 
 /**
@@ -23,6 +30,31 @@ public class InterfazAdmin extends javax.swing.JFrame {
      */
     public InterfazAdmin() {
         initComponents();
+        
+        pestanas.setSelectedIndex(0);
+        jTablePreguntas.setModel(controladora.vistaManagement.setModeloTablaPreguntas(false, ""));
+        JTableHeader tableHeader = jTablePreguntas.getTableHeader();
+        Font headerFont = new Font("Arial", Font.BOLD, 18);
+        float[] hsbColor = new float[3];
+        Color.RGBtoHSB(163, 58, 0, hsbColor);
+        tableHeader.setForeground(Color.getHSBColor(hsbColor[0],hsbColor[1],hsbColor[2]));
+        tableHeader.setFont(headerFont);
+
+
+        jTablePreguntas.getColumnModel().getColumn(0).setPreferredWidth(40);
+        jTablePreguntas.getColumnModel().getColumn(1).setPreferredWidth(800);
+        jTablePreguntas.getColumnModel().getColumn(2).setPreferredWidth(40);
+        jTablePreguntas.setAutoResizeMode(jTablePreguntas.AUTO_RESIZE_LAST_COLUMN);
+        jTablePreguntas.setRowHeight(20);
+        jScrollPanePreguntas.setVisible(true);
+        jTablePreguntas.setVisible(true);
+
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        jTablePreguntas.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        
+
     }
 
     /**
@@ -34,6 +66,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupOpcionCorrecta = new javax.swing.ButtonGroup();
         jPaneFondo = new javax.swing.JPanel();
         Banner = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -63,6 +96,24 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jTabEditarPregunta = new javax.swing.JPanel();
+        Background = new javax.swing.JPanel();
+        imagen = new javax.swing.JLabel();
+        jPanelGuide = new javax.swing.JPanel();
+        Pregunta = new javax.swing.JTextField();
+        Opcion1 = new javax.swing.JTextField();
+        Opcion4 = new javax.swing.JTextField();
+        Opcion3 = new javax.swing.JTextField();
+        Opcion2 = new javax.swing.JTextField();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jPanelButtonGuide = new javax.swing.JPanel();
+        volver = new javax.swing.JButton();
+        cargarImagen = new javax.swing.JButton();
+        guardarCambios = new javax.swing.JButton();
+        editingCheck = new javax.swing.JCheckBox();
         menu1 = new javax.swing.JPanel();
         catalogo = new javax.swing.JLabel();
         menu2 = new javax.swing.JPanel();
@@ -123,9 +174,14 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
         jTablePreguntas.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTablePreguntas.setForeground(new java.awt.Color(123, 58, 0));
-        jTablePreguntas.setRowHeight(40);
+        jTablePreguntas.setRowHeight(50);
         jTablePreguntas.setRowSelectionAllowed(false);
         jTablePreguntas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTablePreguntas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTablePreguntasMousePressed(evt);
+            }
+        });
         jScrollPanePreguntas.setViewportView(jTablePreguntas);
 
         jTabPreguntas.add(jScrollPanePreguntas, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 137, 960, 415));
@@ -133,6 +189,11 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jButtonAgregarPregunta.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jButtonAgregarPregunta.setForeground(new java.awt.Color(123, 58, 0));
         jButtonAgregarPregunta.setText("Agregar pregunta");
+        jButtonAgregarPregunta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAgregarPreguntaMouseClicked(evt);
+            }
+        });
         jButtonAgregarPregunta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAgregarPreguntaActionPerformed(evt);
@@ -151,6 +212,11 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jBuscadorDePreg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBuscadorDePregActionPerformed(evt);
+            }
+        });
+        jBuscadorDePreg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jBuscadorDePregKeyReleased(evt);
             }
         });
         jTabPreguntas.add(jBuscadorDePreg, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 47, 589, 50));
@@ -297,6 +363,216 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
         pestanas.addTab("tab3", jTabPresupuesto);
 
+        jTabEditarPregunta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabEditarPreguntaMouseClicked(evt);
+            }
+        });
+
+        Background.setBackground(new java.awt.Color(255, 242, 223));
+        Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        imagen.setFocusable(false);
+        imagen.setMaximumSize(new java.awt.Dimension(200, 290));
+        imagen.setMinimumSize(new java.awt.Dimension(200, 290));
+        imagen.setOpaque(true);
+        imagen.setPreferredSize(new java.awt.Dimension(200, 290));
+        Background.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 200, 290));
+
+        jPanelGuide.setBackground(new java.awt.Color(255, 242, 223));
+
+        Pregunta.setToolTipText("Ingresar enunciado de pregunta");
+        Pregunta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PreguntaActionPerformed(evt);
+            }
+        });
+
+        Opcion1.setToolTipText("Ingresar opcion 1");
+        Opcion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Opcion1ActionPerformed(evt);
+            }
+        });
+
+        Opcion4.setToolTipText("Ingresar opcion 4");
+        Opcion4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Opcion4ActionPerformed(evt);
+            }
+        });
+
+        Opcion3.setToolTipText("Ingresar opcion 3");
+        Opcion3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Opcion3ActionPerformed(evt);
+            }
+        });
+
+        Opcion2.setToolTipText("Ingresar opcion 2");
+        Opcion2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Opcion2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroupOpcionCorrecta.add(jRadioButton1);
+        jRadioButton1.setText("Opcion 1:");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroupOpcionCorrecta.add(jRadioButton2);
+        jRadioButton2.setText("Opcion 2:");
+
+        buttonGroupOpcionCorrecta.add(jRadioButton3);
+        jRadioButton3.setText("Opcion 3:");
+
+        buttonGroupOpcionCorrecta.add(jRadioButton4);
+        jRadioButton4.setText("Opcion 4:");
+
+        javax.swing.GroupLayout jPanelGuideLayout = new javax.swing.GroupLayout(jPanelGuide);
+        jPanelGuide.setLayout(jPanelGuideLayout);
+        jPanelGuideLayout.setHorizontalGroup(
+            jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelGuideLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Pregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanelGuideLayout.createSequentialGroup()
+                            .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanelGuideLayout.createSequentialGroup()
+                            .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(36, 36, 36)
+                            .addComponent(Opcion1))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelGuideLayout.createSequentialGroup()
+                            .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(36, 36, 36)
+                            .addComponent(Opcion4, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanelGuideLayout.createSequentialGroup()
+                            .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(61, Short.MAX_VALUE))
+        );
+        jPanelGuideLayout.setVerticalGroup(
+            jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelGuideLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(Pregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton3))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Opcion4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton4))
+                .addContainerGap(81, Short.MAX_VALUE))
+        );
+
+        Background.add(jPanelGuide, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 740, 390));
+
+        jPanelButtonGuide.setBackground(new java.awt.Color(255, 242, 223));
+
+        volver.setText("Atrás");
+        volver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                volverMouseClicked(evt);
+            }
+        });
+        volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverActionPerformed(evt);
+            }
+        });
+
+        cargarImagen.setText("Cargar Imagen");
+        cargarImagen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cargarImagenMouseClicked(evt);
+            }
+        });
+        cargarImagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargarImagenActionPerformed(evt);
+            }
+        });
+
+        guardarCambios.setText("Guardar");
+        guardarCambios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                guardarCambiosMouseClicked(evt);
+            }
+        });
+        guardarCambios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarCambiosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelButtonGuideLayout = new javax.swing.GroupLayout(jPanelButtonGuide);
+        jPanelButtonGuide.setLayout(jPanelButtonGuideLayout);
+        jPanelButtonGuideLayout.setHorizontalGroup(
+            jPanelButtonGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelButtonGuideLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(cargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
+                .addGroup(jPanelButtonGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelButtonGuideLayout.createSequentialGroup()
+                        .addComponent(guardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButtonGuideLayout.createSequentialGroup()
+                        .addGap(436, 436, 436)
+                        .addComponent(volver, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+        );
+        jPanelButtonGuideLayout.setVerticalGroup(
+            jPanelButtonGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelButtonGuideLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanelButtonGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(guardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(volver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        Background.add(jPanelButtonGuide, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 1000, 180));
+
+        javax.swing.GroupLayout jTabEditarPreguntaLayout = new javax.swing.GroupLayout(jTabEditarPregunta);
+        jTabEditarPregunta.setLayout(jTabEditarPreguntaLayout);
+        jTabEditarPreguntaLayout.setHorizontalGroup(
+            jTabEditarPreguntaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jTabEditarPreguntaLayout.setVerticalGroup(
+            jTabEditarPreguntaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pestanas.addTab("tab4", jTabEditarPregunta);
+
+        editingCheck.setText("Editando");
+        editingCheck.setToolTipText("");
+        editingCheck.setFocusable(false);
+        pestanas.addTab("tab5", editingCheck);
+
         jPaneFondo.add(pestanas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 1010, 620));
         pestanas.getAccessibleContext().setAccessibleName("");
         pestanas.getAccessibleContext().setAccessibleDescription("");
@@ -404,7 +680,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPaneFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPaneFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)
         );
 
         pack();
@@ -412,7 +688,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
     private void menu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu1MouseClicked
         pestanas.setSelectedIndex(0);
-        jTablePreguntas.setModel(controladora.vistaManagement.setModeloTablaPreguntas());
+        jTablePreguntas.setModel(controladora.vistaManagement.setModeloTablaPreguntas(false,""));
         JTableHeader tableHeader = jTablePreguntas.getTableHeader();
         Font headerFont = new Font("Arial", Font.BOLD, 18);
         float[] hsbColor = new float[3];
@@ -449,7 +725,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_menu3MouseClicked
 
     private void jButtonAgregarPreguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarPreguntaActionPerformed
-        // TODO add your handling code here:
+        // POPUP agregar pregunta y definir opciones
     }//GEN-LAST:event_jButtonAgregarPreguntaActionPerformed
 
     private void jBuscadorDePregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscadorDePregActionPerformed
@@ -476,6 +752,240 @@ public class InterfazAdmin extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButtonAgregarPreguntaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarPreguntaMouseClicked
+        pestanas.setSelectedIndex(3);
+        editingCheck.setSelected(false);
+    }//GEN-LAST:event_jButtonAgregarPreguntaMouseClicked
+
+    private void Opcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Opcion1ActionPerformed
+
+    private void PreguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreguntaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PreguntaActionPerformed
+
+    private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
+        
+    }//GEN-LAST:event_volverActionPerformed
+
+    private void cargarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarImagenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cargarImagenActionPerformed
+
+    private void guardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarCambiosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_guardarCambiosActionPerformed
+
+    private void Opcion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Opcion2ActionPerformed
+
+    private void Opcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Opcion3ActionPerformed
+
+    private void Opcion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Opcion4ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void guardarCambiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarCambiosMouseClicked
+        // GUARDAR CAMBIOS
+        String opc1, opc2, opc3, opc4, enunciado = "";
+        int respuestaCorrecta = 0;
+       
+        opc1 = (Opcion1.getText()!=null) ? Opcion1.getText() : " " ;
+        opc2 = (Opcion2.getText()!=null) ? Opcion2.getText() : " " ;
+        opc3 = (Opcion3.getText()!=null) ? Opcion3.getText() : " " ;
+        opc4 = (Opcion4.getText()!=null) ? Opcion4.getText() : " " ;
+        
+        
+        String[] opciones = new String[]{opc1,opc2,opc3,opc4};
+        enunciado = Pregunta.getText();
+        
+        if(jRadioButton1.isSelected()){respuestaCorrecta = 1;} 
+        if(jRadioButton2.isSelected()){respuestaCorrecta = 2;}
+        if(jRadioButton3.isSelected()){respuestaCorrecta = 3;}
+        if(jRadioButton4.isSelected()){respuestaCorrecta = 4;}
+        
+        //Entra aqui si el usuario no ha ingresado ninguna opcion como la correcta
+        if(respuestaCorrecta == 0){
+            JOptionPane.showMessageDialog(null, "No ha seleccionado ninguna opcion como la correcta.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }else{ 
+            // Entra aqui si la pregunta paso los requerimientos para ser agregada al sistema.
+            if(!editingCheck.isSelected()){
+                // AGREGANDO PREGUNTA
+                Pregunta P1  = new Pregunta(enunciado,opciones,respuestaCorrecta,modelo.globalAccess.imagePath.get(0));
+                modelo.globalAccess.listaDePreguntas.add(P1);
+            }else{
+                // EDITANDO PREGUNTA
+                int location=jTablePreguntas.getSelectedRow();
+                modelo.globalAccess.listaDePreguntas.get(location).setEnunciado(enunciado);
+                modelo.globalAccess.listaDePreguntas.get(location).setOpciones(opciones);
+                modelo.globalAccess.listaDePreguntas.get(location).setRespuestacorrecta(respuestaCorrecta);
+                if(!modelo.globalAccess.imagePath.get(0).isEmpty()){
+                    modelo.globalAccess.listaDePreguntas.get(location).setImagePath(modelo.globalAccess.imagePath.get(0));
+                }
+                
+            }
+            
+            //RESETEAR LOS TEXTOS Y OPCIONES
+            opciones = null;
+            Opcion1.setText("");
+            Opcion2.setText("");
+            Opcion3.setText("");
+            Opcion4.setText("");
+            Pregunta.setText("");
+            buttonGroupOpcionCorrecta.clearSelection();
+            imagen.setIcon(null);
+            modelo.globalAccess.imagePath.set(0,"");
+            
+            // LIMPIAR EL ARRAY CON LA IMAGEN modelo.globalAccess.imagePath.add(file_path);
+            
+            pestanas.setSelectedIndex(0);
+            JOptionPane.showMessageDialog(null, "Pregunta guardada exitosamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+            
+            //REFRESCAR LA TABLA
+            jTablePreguntas.setModel(controladora.vistaManagement.setModeloTablaPreguntas(false, ""));
+            JTableHeader tableHeader = jTablePreguntas.getTableHeader();
+            Font headerFont = new Font("Arial", Font.BOLD, 18);
+            float[] hsbColor = new float[3];
+            Color.RGBtoHSB(163, 58, 0, hsbColor);
+            tableHeader.setForeground(Color.getHSBColor(hsbColor[0],hsbColor[1],hsbColor[2]));
+            tableHeader.setFont(headerFont);
+
+
+            jTablePreguntas.getColumnModel().getColumn(0).setPreferredWidth(40);
+            jTablePreguntas.getColumnModel().getColumn(1).setPreferredWidth(800);
+            jTablePreguntas.getColumnModel().getColumn(2).setPreferredWidth(40);
+            jTablePreguntas.setAutoResizeMode(jTablePreguntas.AUTO_RESIZE_LAST_COLUMN);
+            jTablePreguntas.setRowHeight(20);
+            jScrollPanePreguntas.setVisible(true);
+            jTablePreguntas.setVisible(true);
+
+
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+            jTablePreguntas.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        }
+    }//GEN-LAST:event_guardarCambiosMouseClicked
+
+    private void jTabEditarPreguntaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabEditarPreguntaMouseClicked
+
+    }//GEN-LAST:event_jTabEditarPreguntaMouseClicked
+
+    private void cargarImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarImagenMouseClicked
+        JFileChooser elegirImagen = new JFileChooser();
+        
+        int res = elegirImagen.showSaveDialog(null);
+        
+        if(res == JFileChooser.APPROVE_OPTION){
+            String file_path = elegirImagen.getSelectedFile().getAbsolutePath();
+            
+            modelo.globalAccess.imagePath.set(0,file_path);
+            
+            ImageIcon icon = new ImageIcon(file_path);
+            
+            //hacer que la imagen haga resize para el recuadro
+            Image imageToResize = icon.getImage();
+            Image resizedImage = imageToResize.getScaledInstance(imagen.getWidth(),imagen.getHeight(),Image.SCALE_SMOOTH);
+            ImageIcon resizedIcon = new ImageIcon(resizedImage);
+            
+            // Set el icono dentro del label
+            imagen.setIcon(resizedIcon);
+        }
+            
+    }//GEN-LAST:event_cargarImagenMouseClicked
+
+    private void volverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseClicked
+        Opcion1.setText("");
+        Opcion2.setText("");
+        Opcion3.setText("");
+        Opcion4.setText("");
+        Pregunta.setText("");
+        buttonGroupOpcionCorrecta.clearSelection();
+        imagen.setIcon(null);
+        editingCheck.setSelected(false); 
+        pestanas.setSelectedIndex(0);
+    }//GEN-LAST:event_volverMouseClicked
+
+    private void jTablePreguntasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePreguntasMousePressed
+
+        pestanas.setSelectedIndex(3); 
+        
+        //Numero de columna a la que le dieron click/INDICE DEL OBJETO EN EL ARRAYLIST
+        int location=jTablePreguntas.getSelectedRow();
+        
+        // Mostrar las opciones actuales de la pregunta anterior
+        Opcion1.setText(modelo.globalAccess.listaDePreguntas.get(location).getOpciones()[0]);
+        Opcion2.setText(modelo.globalAccess.listaDePreguntas.get(location).getOpciones()[1]);
+        Opcion3.setText(modelo.globalAccess.listaDePreguntas.get(location).getOpciones()[2]);
+        Opcion4.setText(modelo.globalAccess.listaDePreguntas.get(location).getOpciones()[3]);
+        Pregunta.setText(modelo.globalAccess.listaDePreguntas.get(location).getEnunciado());
+        
+        ImageIcon icon = new ImageIcon(modelo.globalAccess.listaDePreguntas.get(location).getImagePath());
+        //hacer que la imagen haga resize para el recuadro
+        Image imageToResize = icon.getImage();
+        Image resizedImage = imageToResize.getScaledInstance(imagen.getWidth(),imagen.getHeight(),Image.SCALE_SMOOTH);
+        ImageIcon resizedIcon = new ImageIcon(resizedImage);
+
+        // Set el icono dentro del label
+        imagen.setIcon(resizedIcon);
+        
+        // Set el boton que indica cual es la correcta
+        switch(modelo.globalAccess.listaDePreguntas.get(location).getRespuestacorrecta()){
+            case 1:
+                jRadioButton1.setSelected(true);
+                break;
+            case 2:
+                jRadioButton2.setSelected(true);
+                break;
+            case 3:
+                jRadioButton3.setSelected(true);
+                break;
+            case 4:
+                jRadioButton4.setSelected(true);
+                break;
+        }
+    
+        
+        //para indicarle que estamos editando una pregunta que ya existe
+        editingCheck.setSelected(true); 
+    }//GEN-LAST:event_jTablePreguntasMousePressed
+
+    private void jBuscadorDePregKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscadorDePregKeyReleased
+        // Filtrado de objetos en la lista que contienen la letra en cuestion
+        boolean option = true;
+        String texto = jBuscadorDePreg.getText();
+        
+        
+        jTablePreguntas.setModel(controladora.vistaManagement.setModeloTablaPreguntas(option,texto));
+        JTableHeader tableHeader = jTablePreguntas.getTableHeader();
+        Font headerFont = new Font("Arial", Font.BOLD, 18);
+        float[] hsbColor = new float[3];
+        Color.RGBtoHSB(163, 58, 0, hsbColor);
+        tableHeader.setForeground(Color.getHSBColor(hsbColor[0],hsbColor[1],hsbColor[2]));
+        tableHeader.setFont(headerFont);
+
+
+        jTablePreguntas.getColumnModel().getColumn(0).setPreferredWidth(40);
+        jTablePreguntas.getColumnModel().getColumn(1).setPreferredWidth(800);
+        jTablePreguntas.getColumnModel().getColumn(2).setPreferredWidth(40);
+        jTablePreguntas.setAutoResizeMode(jTablePreguntas.AUTO_RESIZE_LAST_COLUMN);
+        jTablePreguntas.setRowHeight(20);
+        jScrollPanePreguntas.setVisible(true);
+        jTablePreguntas.setVisible(true);
+
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        jTablePreguntas.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+    }//GEN-LAST:event_jBuscadorDePregKeyReleased
 
     /**
      * @param args the command line arguments
@@ -517,9 +1027,20 @@ public class InterfazAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Background;
     private javax.swing.JPanel Banner;
+    private javax.swing.JTextField Opcion1;
+    private javax.swing.JTextField Opcion2;
+    private javax.swing.JTextField Opcion3;
+    private javax.swing.JTextField Opcion4;
+    private javax.swing.JTextField Pregunta;
     private javax.swing.JLabel Presupuesto;
+    private javax.swing.ButtonGroup buttonGroupOpcionCorrecta;
+    private javax.swing.JButton cargarImagen;
     private javax.swing.JLabel catalogo;
+    private javax.swing.JCheckBox editingCheck;
+    private javax.swing.JButton guardarCambios;
+    private javax.swing.JLabel imagen;
     private javax.swing.JPanel jBotonDeBuscar;
     private javax.swing.JTextField jBuscadorDePreg;
     private javax.swing.JButton jButtonAgregarPregunta;
@@ -538,10 +1059,17 @@ public class InterfazAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPaneFondo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanelButtonGuide;
+    private javax.swing.JPanel jPanelGuide;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPanePreguntas;
     private javax.swing.JComboBox<String> jSeleccionarMaterial1;
     private javax.swing.JComboBox<String> jSeleccionarMaterial2;
     private javax.swing.JComboBox<String> jSeleccionarMaterial3;
+    private javax.swing.JPanel jTabEditarPregunta;
     private javax.swing.JPanel jTabMateriales;
     private javax.swing.JPanel jTabPreguntas;
     private javax.swing.JPanel jTabPresupuesto;
@@ -552,5 +1080,6 @@ public class InterfazAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel menu2;
     private javax.swing.JPanel menu3;
     private javax.swing.JTabbedPane pestanas;
+    private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }
