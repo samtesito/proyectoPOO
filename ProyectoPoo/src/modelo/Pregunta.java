@@ -4,8 +4,6 @@
  */
 package modelo;
 
-import java.io.File;
-
 
 /**
  *
@@ -18,7 +16,6 @@ public class Pregunta {
     private int respuestacorrecta;
     private int usos;
     private int aciertos;
-    private String imagePath = "";
 
     public Pregunta(String enunciado, String[] opciones, int respuestacorrecta, int usos, int aciertos ) {
         this.enunciado = enunciado;
@@ -27,27 +24,17 @@ public class Pregunta {
         this.usos = usos;
         this.aciertos = aciertos;
     }
-    public Pregunta(String enunciado, String[] opciones, int respuestacorrecta, String path) {
+    public Pregunta(String enunciado, String[] opciones, int respuestacorrecta) {
         this.enunciado = enunciado;
         this.opciones = opciones;
         this.respuestacorrecta = respuestacorrecta;
         this.usos = 0;
         this.aciertos = 0;
-        this.imagePath = path;
     }
 
     public int getUsos() {
         return usos;
     }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-    
 
     public void setUsos(int usos) {
         this.usos = usos;
@@ -92,6 +79,4 @@ public class Pregunta {
             return 0;
         }
     }
-    
-    
 }
