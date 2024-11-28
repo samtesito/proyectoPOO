@@ -15,6 +15,7 @@ import java.util.List;
 import modelo.Pregunta;
 import com.google.gson.*;
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  *
@@ -37,6 +38,10 @@ public class vistaManagement{
         //modelo.globalAccess.listaDePreguntas.add(new modelo.Pregunta("¿de qué especie es Nemo",mantequilla,3));
         //modelo.globalAccess.listaDePreguntas.add(new modelo.Pregunta("¿Imperio mas grande de la edad media?",mantequilla,0));
         lTemp.addAll(jConector.ReadJson(fConector.readFPregunta()));
+        
+        // Guardar localizacion de la imagen para agregar y editar.
+        modelo.globalAccess.imagePath = new ArrayList<String>();
+        modelo.globalAccess.imagePath.add("");
         
         
         for(Object pregunta : lTemp){
@@ -86,7 +91,7 @@ public class vistaManagement{
     
     /////// FUNCION PROVISIONAL
             
-    public static DefaultTableModel setModeloTablaPreguntas(){
+    public static DefaultTableModel setModeloTablaPreguntas(boolean option, String text){
         Object[] header = new Object[]{"Nro", "Pregunta", "% de acierto"};
         DefaultTableModel model;
         model = new DefaultTableModel(header, 0){
@@ -95,8 +100,16 @@ public class vistaManagement{
                 return false;
             }
         };
-        for(modelo.Pregunta pregunta : modelo.globalAccess.listaDePreguntas){
-            model.addRow(new Object[]{modelo.globalAccess.listaDePreguntas.indexOf(pregunta), pregunta.getEnunciado(), pregunta.getPorcentajedeacierto()});
+        if(!option){
+            for(modelo.Pregunta pregunta : modelo.globalAccess.listaDePreguntas){
+                model.addRow(new Object[]{modelo.globalAccess.listaDePreguntas.indexOf(pregunta), pregunta.getEnunciado(), pregunta.getPorcentajedeacierto()});
+            }
+        }else   {
+            for(modelo.Pregunta pregunta : modelo.globalAccess.listaDePreguntas){
+                if(pregunta.getEnunciado().toLowerCase().contains(text.toLowerCase())){
+                    model.addRow(new Object[]{modelo.globalAccess.listaDePreguntas.indexOf(pregunta), pregunta.getEnunciado(), pregunta.getPorcentajedeacierto()});
+                }
+            }
         }
         
         return model;

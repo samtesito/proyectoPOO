@@ -10,4 +10,5 @@ import java.util.List;
  */
 public class globalAccess {
     public static List<modelo.Pregunta> listaDePreguntas;
+    public static List<String> imagePath;
 }
