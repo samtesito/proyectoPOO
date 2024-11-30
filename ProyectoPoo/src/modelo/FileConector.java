@@ -14,6 +14,11 @@ import java.nio.charset.StandardCharsets;
  * @author apari
  */
 public class FileConector {
+    
+    private static String pathFPregunta = "BD/fPregunta.json";
+    private static String pathFMaterial = "BD/fMaterial.json";
+    private static String pathFUsuario = "BD/fUsuario.json";
+    
     private String readFile(String PathFile){
         try{
             Path fileName = Path.of(PathFile);
@@ -37,9 +42,21 @@ public class FileConector {
     
     
     public String readFPregunta(){
-        return readFile("BD/fPregunta.json");
+        return readFile(pathFPregunta);
     }
     public void writeFPregunta( String Content){
-        writeFile("BD/fPregunta.json",Content);
+        writeFile(pathFPregunta,Content);
+    }
+    public String readFMaterial(){
+        return readFile(pathFMaterial);
+    }
+    public void writeFMaterial( String Content){
+        writeFile(pathFMaterial,Content);
+    }
+    public String readFUsuario(){
+        return readFile(pathFUsuario);
+    }
+    public void writeFUsuario( String Content){
+        writeFile(pathFUsuario,Content);
     }
 }
