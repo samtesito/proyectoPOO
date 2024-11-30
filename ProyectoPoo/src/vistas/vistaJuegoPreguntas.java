@@ -13,8 +13,19 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
     /**
      * Creates new form vistaJuegoPreguntas
      */
+    public static int modoDeJuego;
+    //private static int modoDeJuego;
+    
     public vistaJuegoPreguntas() {
         initComponents();
+    }
+    
+    public static void setModoDeJuego(int jugadores){
+        modoDeJuego = jugadores;
+        
+        if (modoDeJuego==1){
+            //pnlTurnoJugador.setVisible(false);
+        }
     }
 
     /**
@@ -31,9 +42,9 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabelLogo = new javax.swing.JLabel();
-        jButtonIniciarSesion = new javax.swing.JLabel();
-        jTurnoJugador = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        btnVolverInicio = new javax.swing.JLabel();
+        pnlTurnoJugador = new javax.swing.JPanel();
+        lblTurnoJugadores = new javax.swing.JLabel();
         jOpcionA = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jOpcionB = new javax.swing.JPanel();
@@ -73,43 +84,43 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/glasses.png"))); // NOI18N
         Banner.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        jButtonIniciarSesion.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jButtonIniciarSesion.setForeground(new java.awt.Color(242, 242, 242));
-        jButtonIniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/logout.png"))); // NOI18N
-        jButtonIniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnVolverInicio.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        btnVolverInicio.setForeground(new java.awt.Color(242, 242, 242));
+        btnVolverInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/logout.png"))); // NOI18N
+        btnVolverInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonIniciarSesionMouseClicked(evt);
+                btnVolverInicioMouseClicked(evt);
             }
         });
-        Banner.add(jButtonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 50, -1, -1));
+        Banner.add(btnVolverInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 50, -1, -1));
 
         jFondo.add(Banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jTurnoJugador.setBackground(new java.awt.Color(78, 95, 23));
+        pnlTurnoJugador.setBackground(new java.awt.Color(78, 95, 23));
 
-        jLabel7.setFont(new java.awt.Font("Arial", 3, 28)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(213, 223, 181));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Jugador, ¡es tu turno!");
+        lblTurnoJugadores.setFont(new java.awt.Font("Arial", 3, 28)); // NOI18N
+        lblTurnoJugadores.setForeground(new java.awt.Color(213, 223, 181));
+        lblTurnoJugadores.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTurnoJugadores.setText("Jugador, ¡es tu turno!");
 
-        javax.swing.GroupLayout jTurnoJugadorLayout = new javax.swing.GroupLayout(jTurnoJugador);
-        jTurnoJugador.setLayout(jTurnoJugadorLayout);
-        jTurnoJugadorLayout.setHorizontalGroup(
-            jTurnoJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jTurnoJugadorLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlTurnoJugadorLayout = new javax.swing.GroupLayout(pnlTurnoJugador);
+        pnlTurnoJugador.setLayout(pnlTurnoJugadorLayout);
+        pnlTurnoJugadorLayout.setHorizontalGroup(
+            pnlTurnoJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTurnoJugadorLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTurnoJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
-        jTurnoJugadorLayout.setVerticalGroup(
-            jTurnoJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jTurnoJugadorLayout.createSequentialGroup()
+        pnlTurnoJugadorLayout.setVerticalGroup(
+            pnlTurnoJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTurnoJugadorLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTurnoJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jFondo.add(jTurnoJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 440, 70));
+        jFondo.add(pnlTurnoJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 440, 70));
 
         jOpcionA.setBackground(new java.awt.Color(255, 87, 87));
 
@@ -255,10 +266,10 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionMouseClicked
+    private void btnVolverInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverInicioMouseClicked
         this.dispose();
         controladora.vistaManagement.loadStart();
-    }//GEN-LAST:event_jButtonIniciarSesionMouseClicked
+    }//GEN-LAST:event_btnVolverInicioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -297,7 +308,7 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Banner;
-    private javax.swing.JLabel jButtonIniciarSesion;
+    private javax.swing.JLabel btnVolverInicio;
     private javax.swing.JPanel jFondo;
     private javax.swing.JPanel jImagen1;
     private javax.swing.JPanel jImagen2;
@@ -306,7 +317,6 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JPanel jOpcionA;
@@ -314,6 +324,7 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
     private javax.swing.JPanel jOpcionC;
     private javax.swing.JPanel jOpcionD;
     private javax.swing.JLabel jPregunta;
-    private javax.swing.JPanel jTurnoJugador;
+    private javax.swing.JLabel lblTurnoJugadores;
+    private javax.swing.JPanel pnlTurnoJugador;
     // End of variables declaration//GEN-END:variables
 }
