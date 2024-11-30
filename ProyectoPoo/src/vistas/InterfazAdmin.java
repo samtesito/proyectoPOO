@@ -17,7 +17,7 @@ import modelo.Pregunta;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-
+import controladora.ListaManagement;
 
 /**
  *
@@ -109,6 +109,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
+        lError = new javax.swing.JLabel();
         jPanelButtonGuide = new javax.swing.JPanel();
         volver = new javax.swing.JButton();
         cargarImagen = new javax.swing.JButton();
@@ -417,6 +418,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
         });
 
         buttonGroupOpcionCorrecta.add(jRadioButton1);
+        jRadioButton1.setSelected(true);
         jRadioButton1.setText("Opcion 1:");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -433,14 +435,18 @@ public class InterfazAdmin extends javax.swing.JFrame {
         buttonGroupOpcionCorrecta.add(jRadioButton4);
         jRadioButton4.setText("Opcion 4:");
 
+        lError.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lError.setForeground(new java.awt.Color(255, 0, 0));
+        lError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout jPanelGuideLayout = new javax.swing.GroupLayout(jPanelGuide);
         jPanelGuide.setLayout(jPanelGuideLayout);
         jPanelGuideLayout.setHorizontalGroup(
             jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelGuideLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
-                .addGroup(jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Pregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Pregunta, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
                     .addGroup(jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanelGuideLayout.createSequentialGroup()
                             .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -457,13 +463,16 @@ public class InterfazAdmin extends javax.swing.JFrame {
                         .addGroup(jPanelGuideLayout.createSequentialGroup()
                             .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Opcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanelGuideLayout.setVerticalGroup(
             jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelGuideLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(7, 7, 7)
+                .addComponent(lError)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Pregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -775,7 +784,26 @@ public class InterfazAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_cargarImagenActionPerformed
 
     private void guardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarCambiosActionPerformed
-        // TODO add your handling code here:
+        /*ListaManagement vMan = new ListaManagement();
+        int vRespuesta;
+        if(jRadioButton1.isSelected()){
+            vRespuesta=1;
+        }else{
+            if(jRadioButton2.isSelected()){
+                vRespuesta=2;
+            }else{
+                if(jRadioButton3.isSelected()){
+                    vRespuesta=3;
+                }else{
+                    vRespuesta=4;
+                }
+            }
+        }
+        if(Pregunta.getText().isBlank() || Opcion1.getText().isBlank() || Opcion2.getText().isBlank() || Opcion3.getText().isBlank() || Opcion4.getText().isBlank()){
+            lError.setText("Se deben rellenar todos los campos antes de guardar.");
+        }else{
+            vMan.guardarPregunta(Pregunta.getText(), new String[]{Opcion1.getText(),Opcion2.getText(),Opcion3.getText(),Opcion4.getText()}, vRespuesta, "");
+        }*/
     }//GEN-LAST:event_guardarCambiosActionPerformed
 
     private void Opcion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion2ActionPerformed
@@ -799,6 +827,10 @@ public class InterfazAdmin extends javax.swing.JFrame {
         String opc1, opc2, opc3, opc4, enunciado = "";
         int respuestaCorrecta = 0;
        
+        if(Pregunta.getText().isBlank() || Opcion1.getText().isBlank() || Opcion2.getText().isBlank() || Opcion3.getText().isBlank() || Opcion4.getText().isBlank()){
+            lError.setText("Se deben rellenar todos los campos antes de guardar.");
+            return;
+        }
         opc1 = (Opcion1.getText()!=null) ? Opcion1.getText() : " " ;
         opc2 = (Opcion2.getText()!=null) ? Opcion2.getText() : " " ;
         opc3 = (Opcion3.getText()!=null) ? Opcion3.getText() : " " ;
@@ -1075,6 +1107,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jTabPresupuesto;
     private javax.swing.JTable jTablePreguntas;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lError;
     private javax.swing.JLabel materiales;
     private javax.swing.JPanel menu1;
     private javax.swing.JPanel menu2;

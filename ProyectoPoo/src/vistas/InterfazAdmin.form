@@ -685,10 +685,10 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="Pregunta" min="-2" pref="620" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="Pregunta" pref="620" max="32767" attributes="0"/>
                                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Component id="jRadioButton3" min="-2" pref="98" max="-2" attributes="0"/>
@@ -711,6 +711,7 @@
                                               <Component id="Opcion2" min="-2" pref="452" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <Component id="lError" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="61" max="32767" attributes="0"/>
                               </Group>
@@ -719,7 +720,9 @@
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                  <Component id="lError" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="Pregunta" min="-2" pref="40" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -792,6 +795,7 @@
                             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                               <ComponentRef name="buttonGroupOpcionCorrecta"/>
                             </Property>
+                            <Property name="selected" type="boolean" value="true"/>
                             <Property name="text" type="java.lang.String" value="Opcion 1:"/>
                           </Properties>
                           <Events>
@@ -820,6 +824,17 @@
                               <ComponentRef name="buttonGroupOpcionCorrecta"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Opcion 4:"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lError">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Arial" size="12" style="1"/>
+                            </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="0" green="0" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
                           </Properties>
                         </Component>
                       </SubComponents>
