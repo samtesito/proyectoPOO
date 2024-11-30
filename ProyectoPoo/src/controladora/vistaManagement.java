@@ -29,17 +29,13 @@ public class vistaManagement{
      */
     public static void main(String[] args) {
         Gson gson = new Gson();
-        String[] mantequilla = {"¿El cielo es azul?", "¿De qué color es una naranja?", "Pistacho", "Garbanzo"};
+        //String[] mantequilla = {"¿El cielo es azul?", "¿De qué color es una naranja?", "Pistacho", "Garbanzo"};
         modelo.globalAccess.listaDePreguntas = new ArrayList<modelo.Pregunta>();
         modelo.globalAccess.listaDeUsuarios = new ArrayList<modelo.Usuario>();
         ArrayList<Object> lTemp = new ArrayList<Object>();
         ArrayList<Object> lTempUsuario = new ArrayList<Object>();
         JsonConector<modelo.Pregunta> jConector = new JsonConector();
         FileConector fConector = new FileConector();
-        //modelo.globalAccess.listaDePreguntas.add(new modelo.Pregunta("¿de qué color son las naranjas?",mantequilla,2));
-        //modelo.globalAccess.listaDePreguntas.add(new modelo.Pregunta("¿de qué tamanio es Berlin?",mantequilla,1));
-        //modelo.globalAccess.listaDePreguntas.add(new modelo.Pregunta("¿de qué especie es Nemo",mantequilla,3));
-        //modelo.globalAccess.listaDePreguntas.add(new modelo.Pregunta("¿Imperio mas grande de la edad media?",mantequilla,0));
         lTemp.addAll(jConector.ReadJson(fConector.readFPregunta()));
         lTempUsuario.addAll(jConector.ReadJson(fConector.readFUsuario()));
 
@@ -90,12 +86,16 @@ public class vistaManagement{
         });
     }
     
+    
+    
     public static void loadVistaJuegoPreguntas(int modoDeJuego){        
         /* Create and display the form */
+        ListaManagement lManagement = new ListaManagement();
+        int vM[] = lManagement.getPreguntasXjugador(modoDeJuego);
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vistaJuegoPreguntas().setVisible(true);
-                vistaJuegoPreguntas.setModoDeJuego(modoDeJuego);
+                new vistaJuegoPreguntas(modoDeJuego, vM).setVisible(true);
             }
         });
     }

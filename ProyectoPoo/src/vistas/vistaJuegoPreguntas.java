@@ -4,12 +4,20 @@
  */
 package vistas;
 
+import java.util.List;
+import modelo.Pregunta;
+import controladora.ListaManagement;
 /**
  *
  * @author Edixon Gonzalez
  */
 public class vistaJuegoPreguntas extends javax.swing.JFrame {
-
+    private int lPreguntas[];
+    private int pJ1 = 0;
+    private int pJ2 = 0;
+    private int ipregunta=0;
+    private modelo.Pregunta pActual;
+    ListaManagement lManagement = new ListaManagement(); 
     /**
      * Creates new form vistaJuegoPreguntas
      */
@@ -20,12 +28,25 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
         initComponents();
     }
     
-    public static void setModoDeJuego(int jugadores){
+    public vistaJuegoPreguntas(int jugadores, int lPreg[]) {
+        lPreguntas = lPreg;
+        initComponents();
+        loadPregunta(lManagement.getPregunta(lPreguntas[ipregunta]));
+        setModoDeJuego(jugadores);
+    }
+    public void setModoDeJuego(int jugadores){
         modoDeJuego = jugadores;
         
         if (modoDeJuego==1){
-            //pnlTurnoJugador.setVisible(false);
+            pnlTurnoJugador.setVisible(false);
         }
+    }
+    public void loadPregunta(Pregunta vP){
+        jPregunta.setText(vP.getEnunciado());
+        jLabel10.setText(vP.getOpciones()[0]);
+        jLabel9.setText(vP.getOpciones()[1]);
+        jLabel11.setText(vP.getOpciones()[2]);
+        jLabel12.setText(vP.getOpciones()[3]);        
     }
 
     /**
@@ -101,7 +122,7 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
         lblTurnoJugadores.setFont(new java.awt.Font("Arial", 3, 28)); // NOI18N
         lblTurnoJugadores.setForeground(new java.awt.Color(213, 223, 181));
         lblTurnoJugadores.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTurnoJugadores.setText("Jugador, ¡es tu turno!");
+        lblTurnoJugadores.setText("Jugador 1, ¡es tu turno!");
 
         javax.swing.GroupLayout pnlTurnoJugadorLayout = new javax.swing.GroupLayout(pnlTurnoJugador);
         pnlTurnoJugador.setLayout(pnlTurnoJugadorLayout);
@@ -124,17 +145,18 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
 
         jOpcionA.setBackground(new java.awt.Color(255, 87, 87));
 
-        jLabel10.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("OPCION A");
 
         javax.swing.GroupLayout jOpcionALayout = new javax.swing.GroupLayout(jOpcionA);
         jOpcionA.setLayout(jOpcionALayout);
         jOpcionALayout.setHorizontalGroup(
             jOpcionALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jOpcionALayout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jOpcionALayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
         jOpcionALayout.setVerticalGroup(
@@ -150,17 +172,18 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
         jOpcionB.setBackground(new java.awt.Color(140, 82, 255));
         jOpcionB.setPreferredSize(new java.awt.Dimension(510, 92));
 
-        jLabel9.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("OPCION B");
 
         javax.swing.GroupLayout jOpcionBLayout = new javax.swing.GroupLayout(jOpcionB);
         jOpcionB.setLayout(jOpcionBLayout);
         jOpcionBLayout.setHorizontalGroup(
             jOpcionBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jOpcionBLayout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jOpcionBLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
         jOpcionBLayout.setVerticalGroup(
@@ -176,17 +199,18 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
         jOpcionC.setBackground(new java.awt.Color(126, 217, 87));
         jOpcionC.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jLabel11.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("OPCION C");
 
         javax.swing.GroupLayout jOpcionCLayout = new javax.swing.GroupLayout(jOpcionC);
         jOpcionC.setLayout(jOpcionCLayout);
         jOpcionCLayout.setHorizontalGroup(
             jOpcionCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jOpcionCLayout.createSequentialGroup()
-                .addContainerGap(89, Short.MAX_VALUE)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jOpcionCLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
         jOpcionCLayout.setVerticalGroup(
@@ -202,17 +226,18 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
         jOpcionD.setBackground(new java.awt.Color(255, 189, 89));
         jOpcionD.setPreferredSize(new java.awt.Dimension(510, 92));
 
-        jLabel12.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("OPCION D");
 
         javax.swing.GroupLayout jOpcionDLayout = new javax.swing.GroupLayout(jOpcionD);
         jOpcionD.setLayout(jOpcionDLayout);
         jOpcionDLayout.setHorizontalGroup(
             jOpcionDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jOpcionDLayout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jOpcionDLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
         jOpcionDLayout.setVerticalGroup(
@@ -255,7 +280,7 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
 
         jFondo.add(jImagen2, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 180, -1, 230));
 
-        jPregunta.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        jPregunta.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jPregunta.setForeground(new java.awt.Color(123, 58, 0));
         jPregunta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPregunta.setText("Pregunta sacada de la base de datos");

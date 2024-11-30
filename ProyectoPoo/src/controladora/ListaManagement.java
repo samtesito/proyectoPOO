@@ -23,10 +23,10 @@ public class ListaManagement {
         int i = 0;
         while (i<cantidadpreguntas){
             nuevapregunta = (int)(Math.random()*limitelista);
-            if (!preguntasselecc.contains(nuevapregunta)) {
+            //if (!preguntasselecc.contains(nuevapregunta)) {
                 preguntasselecc.add(nuevapregunta);
                 i++;
-            }
+            //}
         }
         int[] respuestafinal= new int[preguntasselecc.size()];
         i=0;
@@ -56,6 +56,15 @@ public class ListaManagement {
             cont++;
         }
         return preguntasdeambos;
+    }
+    
+    
+    public int[] getPreguntasXjugador(int vCantJugadores){
+        if(vCantJugadores==1){
+            return getPreguntas1jugador();
+        }else{
+            return getPreguntas2jugador();
+        }
     }
     
     public Pregunta getPregunta(int index){
