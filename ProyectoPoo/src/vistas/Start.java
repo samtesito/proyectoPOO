@@ -34,11 +34,10 @@ public class Start extends javax.swing.JFrame {
         jButtonIniciarSesion = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn2jugadores = new javax.swing.JButton();
+        btn1jugador = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -64,7 +63,6 @@ public class Start extends javax.swing.JFrame {
         Banner.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jButtonIniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/settings.png"))); // NOI18N
-        jButtonIniciarSesion.setPreferredSize(new java.awt.Dimension(75, 75));
         jButtonIniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonIniciarSesionMouseClicked(evt);
@@ -105,42 +103,44 @@ public class Start extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1280, 270));
 
-        jButton1.setBackground(new java.awt.Color(78, 95, 23));
-        jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(213, 223, 181));
-        jButton1.setText("Dos Jugadores");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn2jugadores.setBackground(new java.awt.Color(78, 95, 23));
+        btn2jugadores.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btn2jugadores.setForeground(new java.awt.Color(213, 223, 181));
+        btn2jugadores.setText("Dos Jugadores");
+        btn2jugadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn2jugadoresActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 510, 300, 50));
+        jPanel1.add(btn2jugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 510, 300, 50));
 
-        jButton2.setBackground(new java.awt.Color(78, 95, 23));
-        jButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(213, 223, 181));
-        jButton2.setText("Un Jugador");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn1jugador.setBackground(new java.awt.Color(78, 95, 23));
+        btn1jugador.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btn1jugador.setForeground(new java.awt.Color(213, 223, 181));
+        btn1jugador.setText("Un Jugador");
+        btn1jugador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn1jugadorActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, 300, 50));
+        jPanel1.add(btn1jugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, 300, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn2jugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2jugadoresActionPerformed
         this.dispose();
-        controladora.vistaManagement.loadVistaJuegoPreguntas();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        //vistaJuegoPreguntas.setModoDeJuego(2);
+        controladora.vistaManagement.loadVistaJuegoPreguntas(2);
+    }//GEN-LAST:event_btn2jugadoresActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn1jugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1jugadorActionPerformed
         this.dispose();
-        controladora.vistaManagement.loadVistaJuegoPreguntas();
-    }//GEN-LAST:event_jButton2ActionPerformed
+        //vistaJuegoPreguntas.setModoDeJuego(1);
+        controladora.vistaManagement.loadVistaJuegoPreguntas(1);
+    }//GEN-LAST:event_btn1jugadorActionPerformed
 
     private void jButtonIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionMouseClicked
         this.dispose();
@@ -184,8 +184,8 @@ public class Start extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Banner;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn1jugador;
+    private javax.swing.JButton btn2jugadores;
     private javax.swing.JLabel jButtonIniciarSesion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;

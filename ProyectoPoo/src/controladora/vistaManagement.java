@@ -90,11 +90,12 @@ public class vistaManagement{
         });
     }
     
-    public static void loadVistaJuegoPreguntas(){        
+    public static void loadVistaJuegoPreguntas(int modoDeJuego){        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new vistaJuegoPreguntas().setVisible(true);
+                vistaJuegoPreguntas.setModoDeJuego(modoDeJuego);
             }
         });
     }
