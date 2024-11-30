@@ -13,6 +13,7 @@ import modelo.JsonConector;
 import modelo.FileConector;
 import java.util.List;
 import modelo.Pregunta;
+import modelo.Usuario;
 import com.google.gson.*;
 import java.util.HashMap;
 import java.util.Objects;
@@ -30,7 +31,9 @@ public class vistaManagement{
         Gson gson = new Gson();
         String[] mantequilla = {"¿El cielo es azul?", "¿De qué color es una naranja?", "Pistacho", "Garbanzo"};
         modelo.globalAccess.listaDePreguntas = new ArrayList<modelo.Pregunta>();
+        modelo.globalAccess.listaDeUsuarios = new ArrayList<modelo.Usuario>();
         ArrayList<Object> lTemp = new ArrayList<Object>();
+        ArrayList<Object> lTempUsuario = new ArrayList<Object>();
         JsonConector<modelo.Pregunta> jConector = new JsonConector();
         FileConector fConector = new FileConector();
         //modelo.globalAccess.listaDePreguntas.add(new modelo.Pregunta("¿de qué color son las naranjas?",mantequilla,2));
@@ -38,6 +41,8 @@ public class vistaManagement{
         //modelo.globalAccess.listaDePreguntas.add(new modelo.Pregunta("¿de qué especie es Nemo",mantequilla,3));
         //modelo.globalAccess.listaDePreguntas.add(new modelo.Pregunta("¿Imperio mas grande de la edad media?",mantequilla,0));
         lTemp.addAll(jConector.ReadJson(fConector.readFPregunta()));
+        lTempUsuario.addAll(jConector.ReadJson(fConector.readFUsuario()));
+
         
         // Guardar localizacion de la imagen para agregar y editar.
         modelo.globalAccess.imagePath = new ArrayList<String>();
@@ -48,6 +53,11 @@ public class vistaManagement{
             JsonElement jsonElement = gson.toJsonTree(pregunta);
             modelo.globalAccess.listaDePreguntas.add(gson.fromJson(jsonElement, Pregunta.class));
         }
+        for(Object Usuario : lTempUsuario){
+            JsonElement jsonElement = gson.toJsonTree(Usuario);
+            modelo.globalAccess.listaDeUsuarios.add(gson.fromJson(jsonElement, Usuario.class));
+        }
+
         
         
         loadStart();
@@ -80,11 +90,12 @@ public class vistaManagement{
         });
     }
     
-    public static void loadVistaJuegoPreguntas(){        
+    public static void loadVistaJuegoPreguntas(int modoDeJuego){        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new vistaJuegoPreguntas().setVisible(true);
+                vistaJuegoPreguntas.setModoDeJuego(modoDeJuego);
             }
         });
     }

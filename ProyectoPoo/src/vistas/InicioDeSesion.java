@@ -39,6 +39,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
+        lInvalido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -174,6 +175,11 @@ public class InicioDeSesion extends javax.swing.JFrame {
         jPasswordField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Fondo.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 377, 648, 49));
 
+        lInvalido.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lInvalido.setForeground(new java.awt.Color(255, 0, 0));
+        lInvalido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Fondo.add(lInvalido, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 640, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -194,8 +200,17 @@ public class InicioDeSesion extends javax.swing.JFrame {
 
     private void IngresarComoAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IngresarComoAdminMouseClicked
         // aniadir validaciones de credenciales de usuario
-        this.dispose();
-        controladora.vistaManagement.loadInterfazAdmin();
+        boolean valido = false;
+        for(modelo.Usuario usuario : modelo.globalAccess.listaDeUsuarios){
+            valido = usuario.getPassword().equals(String.valueOf(jPasswordField1.getPassword()) ) && usuario.getUsername().equals(NombreDeUsuario.getText());
+            if (valido) break;
+        }
+        if (valido){
+            this.dispose();
+            controladora.vistaManagement.loadInterfazAdmin();            
+        }else{
+            lInvalido.setText("USUARIO O CONTRASEÑA INVALIDO");
+        }
     }//GEN-LAST:event_IngresarComoAdminMouseClicked
 
     private void NombreDeUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreDeUsuarioKeyPressed
@@ -203,8 +218,9 @@ public class InicioDeSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_NombreDeUsuarioKeyPressed
 
     private void VolverAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VolverAtrasMouseClicked
+
         this.dispose();
-        controladora.vistaManagement.loadStart();
+        controladora.vistaManagement.loadStart();       
     }//GEN-LAST:event_VolverAtrasMouseClicked
 
     /**
@@ -256,5 +272,6 @@ public class InicioDeSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JLabel lInvalido;
     // End of variables declaration//GEN-END:variables
 }
