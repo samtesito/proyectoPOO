@@ -5,7 +5,9 @@
 package controladora;
 
 import java.util.ArrayList;
-
+import modelo.FileConector;
+import modelo.JsonConector;
+import modelo.Pregunta;
 /**
  *
  * @author samue
@@ -14,7 +16,7 @@ public class ListaManagement {
     
     /// SELECCION DE PREGUNTAS
     
-    public static int[] seleccionarPreguntasAleatorias(int cantidadpreguntas){
+    private int[] seleccionarPreguntasAleatorias(int cantidadpreguntas){
         ArrayList<Integer> preguntasselecc = new ArrayList<Integer>();
         int limitelista = modelo.globalAccess.listaDePreguntas.size();
         int nuevapregunta;
@@ -35,12 +37,12 @@ public class ListaManagement {
         return respuestafinal;
     }
     
-    public static int[] getPreguntas1jugador(){
+    public int[] getPreguntas1jugador(){
         int[] preguntas = seleccionarPreguntasAleatorias(10);
         return preguntas;
     }
     
-    public static int[] getPreguntas2jugador(){
+    public int[] getPreguntas2jugador(){
         int cont=0;
         int[] preguntasdeambos = new int[20];
         int[] preguntas = seleccionarPreguntasAleatorias(10);
@@ -54,6 +56,18 @@ public class ListaManagement {
             cont++;
         }
         return preguntasdeambos;
+    }
+    
+    public Pregunta getPregunta(int index){
+        return modelo.globalAccess.listaDePreguntas.get(index);
+    }
+    
+    public void guardarPregunta(String enunciado, String opciones[], int respuesta, String pathImg){  
+        JsonConector<modelo.Pregunta> jConector = new JsonConector();
+        FileConector fConector = new FileConector();      
+        Pregunta pregunta = new Pregunta(enunciado,opciones,respuesta,pathImg);
+        modelo.globalAccess.listaDePreguntas.add(pregunta);
+        fConector.writeFPregunta(jConector.WriteJson(modelo.globalAccess.listaDePreguntas));
     }
     
     /// VISUALIZACION DE PREGUNTAS
