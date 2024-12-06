@@ -14,6 +14,7 @@ import modelo.FileConector;
 import java.util.List;
 import modelo.Pregunta;
 import modelo.Usuario;
+import modelo.Material;
 import com.google.gson.*;
 import java.util.HashMap;
 import java.util.Objects;
@@ -32,12 +33,15 @@ public class vistaManagement{
         //String[] mantequilla = {"¿El cielo es azul?", "¿De qué color es una naranja?", "Pistacho", "Garbanzo"};
         modelo.globalAccess.listaDePreguntas = new ArrayList<modelo.Pregunta>();
         modelo.globalAccess.listaDeUsuarios = new ArrayList<modelo.Usuario>();
+        modelo.globalAccess.listaDeMateriales = new ArrayList<modelo.Material>();
         ArrayList<Object> lTemp = new ArrayList<Object>();
         ArrayList<Object> lTempUsuario = new ArrayList<Object>();
+        ArrayList<Object> lTempMaterial = new ArrayList<Object>();
         JsonConector<modelo.Pregunta> jConector = new JsonConector();
         FileConector fConector = new FileConector();
         lTemp.addAll(jConector.ReadJson(fConector.readFPregunta()));
         lTempUsuario.addAll(jConector.ReadJson(fConector.readFUsuario()));
+        lTempMaterial.addAll(jConector.ReadJson(fConector.readFMaterial()));
 
         
         // Guardar localizacion de la imagen para agregar y editar.
@@ -53,7 +57,10 @@ public class vistaManagement{
             JsonElement jsonElement = gson.toJsonTree(Usuario);
             modelo.globalAccess.listaDeUsuarios.add(gson.fromJson(jsonElement, Usuario.class));
         }
-
+        for(Object material : lTempUsuario){
+            JsonElement jsonElement = gson.toJsonTree(material);
+            modelo.globalAccess.listaDeMateriales.add(gson.fromJson(jsonElement, Material.class));
+        }
         
         
         loadStart();
