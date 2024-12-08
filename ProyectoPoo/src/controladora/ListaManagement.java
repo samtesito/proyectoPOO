@@ -72,13 +72,16 @@ public class ListaManagement {
         return modelo.globalAccess.listaDePreguntas.get(index);
     }
     
-    public void guardarPregunta(String enunciado, String opciones[], int respuesta, String pathImg){  
+    public void guardarPregunta(){  
         JsonConector<modelo.Pregunta> jConector = new JsonConector();
-        FileConector fConector = new FileConector();      
-        Pregunta pregunta = new Pregunta(enunciado,opciones,respuesta,pathImg);
-        modelo.globalAccess.listaDePreguntas.add(pregunta);
+        FileConector fConector = new FileConector();    
         fConector.writeFPregunta(jConector.WriteJson(modelo.globalAccess.listaDePreguntas));
     }
+    public void AddPregunta(modelo.Pregunta vPregunta){
+        modelo.globalAccess.listaDePreguntas.add(vPregunta);
+    }
+    
+    
     
     /// VISUALIZACION DE PREGUNTAS
     

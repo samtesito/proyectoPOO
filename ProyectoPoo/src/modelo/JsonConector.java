@@ -15,7 +15,9 @@ public class JsonConector<T> {
     public ArrayList<T> ReadJson( String fText){
         Gson json = new Gson();
         ArrayList<T> nObject = new ArrayList<T>();
-        nObject.addAll(json.fromJson(fText, ArrayList.class));
+        if (fText!=null && !"".equals(fText)){
+            nObject.addAll(json.fromJson(fText, ArrayList.class));        
+        }        
         return nObject;
     }
     

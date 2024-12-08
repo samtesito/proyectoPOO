@@ -820,6 +820,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
     private void guardarCambiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarCambiosMouseClicked
         // GUARDAR CAMBIOS
         String opc1, opc2, opc3, opc4, enunciado = "";
+        ListaManagement vMan = new ListaManagement();
         int respuestaCorrecta = 0;
        
         if(Pregunta.getText().isBlank() || Opcion1.getText().isBlank() || Opcion2.getText().isBlank() || Opcion3.getText().isBlank() || Opcion4.getText().isBlank()){
@@ -848,7 +849,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
             if(!editingCheck.isSelected()){
                 // AGREGANDO PREGUNTA
                 Pregunta P1  = new Pregunta(enunciado,opciones,respuestaCorrecta,modelo.globalAccess.imagePath.get(0));
-                modelo.globalAccess.listaDePreguntas.add(P1);
+                vMan.AddPregunta(P1);
             }else{
                 // EDITANDO PREGUNTA
                 int location=jTablePreguntas.getSelectedRow();
@@ -857,10 +858,9 @@ public class InterfazAdmin extends javax.swing.JFrame {
                 modelo.globalAccess.listaDePreguntas.get(location).setRespuestacorrecta(respuestaCorrecta);
                 if(!modelo.globalAccess.imagePath.get(0).isEmpty()){
                     modelo.globalAccess.listaDePreguntas.get(location).setImagePath(modelo.globalAccess.imagePath.get(0));
-                }
-                
+                }                
             }
-            
+            vMan.guardarPregunta();
             //RESETEAR LOS TEXTOS Y OPCIONES
             opciones = null;
             Opcion1.setText("");
