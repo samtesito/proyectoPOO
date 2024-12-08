@@ -75,11 +75,11 @@ public class vistaManagement{
         });
     }
     
-    public static void loadResultado(){        
+    public static void loadResultado(int pJ1,int pJ2,int modoDeJuego){        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Resultado().setVisible(true);
+                new Resultadov2(pJ1,pJ2,modoDeJuego).setVisible(true);
             }
         });
     }

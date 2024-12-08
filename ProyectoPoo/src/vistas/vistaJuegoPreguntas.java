@@ -21,7 +21,7 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
     /**
      * Creates new form vistaJuegoPreguntas
      */
-    public static int modoDeJuego;
+    public int modoDeJuego;
     //private static int modoDeJuego;
     
     public vistaJuegoPreguntas() {
@@ -41,12 +41,38 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
             pnlTurnoJugador.setVisible(false);
         }
     }
+    public void loadNextPregunta(){
+        ipregunta++;
+        if((ipregunta%modoDeJuego)==0){
+            lblTurnoJugadores.setText("Jugador 1, ¡es tu turno!");
+        }else{
+            lblTurnoJugadores.setText("Jugador 2, ¡es tu turno!");
+        }
+        
+        if(ipregunta<lPreguntas.length){
+            loadPregunta(lManagement.getPregunta(lPreguntas[ipregunta]));
+        }else{
+            this.dispose();
+            controladora.vistaManagement.loadResultado(pJ1,pJ2,modoDeJuego);
+        }
+    }
     public void loadPregunta(Pregunta vP){
         jPregunta.setText(vP.getEnunciado());
-        jLabel10.setText(vP.getOpciones()[0]);
-        jLabel9.setText(vP.getOpciones()[1]);
-        jLabel11.setText(vP.getOpciones()[2]);
-        jLabel12.setText(vP.getOpciones()[3]);        
+        taOpcionA.setText(vP.getOpciones()[0]);
+        taOpcionB.setText(vP.getOpciones()[1]);
+        taOpcionC.setText(vP.getOpciones()[2]);
+        taOpcionD.setText(vP.getOpciones()[3]);
+        pActual= vP;       
+    }
+    public void respuestaDefinitiva(int vOpcion){
+        if(pActual.getRespuestacorrecta()==vOpcion){
+            if((ipregunta%modoDeJuego)==0){
+                pJ1++;
+            }else{
+                pJ2++; 
+            }
+        }
+        loadNextPregunta();
     }
 
     /**
@@ -67,13 +93,13 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
         pnlTurnoJugador = new javax.swing.JPanel();
         lblTurnoJugadores = new javax.swing.JLabel();
         jOpcionA = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        taOpcionA = new javax.swing.JTextArea();
         jOpcionB = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        taOpcionB = new javax.swing.JTextArea();
         jOpcionC = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        taOpcionC = new javax.swing.JTextArea();
         jOpcionD = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        taOpcionD = new javax.swing.JTextArea();
         jImagen1 = new javax.swing.JPanel();
         jImagen2 = new javax.swing.JPanel();
         jPregunta = new javax.swing.JLabel();
@@ -145,10 +171,20 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
 
         jOpcionA.setBackground(new java.awt.Color(255, 87, 87));
 
-        jLabel10.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("OPCION A");
+        taOpcionA.setEditable(false);
+        taOpcionA.setBackground(new java.awt.Color(255, 87, 87));
+        taOpcionA.setColumns(20);
+        taOpcionA.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        taOpcionA.setLineWrap(true);
+        taOpcionA.setRows(5);
+        taOpcionA.setWrapStyleWord(true);
+        taOpcionA.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        taOpcionA.setEnabled(false);
+        taOpcionA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                taOpcionAMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jOpcionALayout = new javax.swing.GroupLayout(jOpcionA);
         jOpcionA.setLayout(jOpcionALayout);
@@ -156,26 +192,36 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
             jOpcionALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jOpcionALayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
+                .addComponent(taOpcionA)
+                .addContainerGap())
         );
         jOpcionALayout.setVerticalGroup(
             jOpcionALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jOpcionALayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                .addGap(14, 14, 14))
+                .addContainerGap()
+                .addComponent(taOpcionA, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jFondo.add(jOpcionA, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, 510, -1));
+        jFondo.add(jOpcionA, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, 510, 100));
 
         jOpcionB.setBackground(new java.awt.Color(140, 82, 255));
         jOpcionB.setPreferredSize(new java.awt.Dimension(510, 92));
 
-        jLabel9.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("OPCION B");
+        taOpcionB.setEditable(false);
+        taOpcionB.setBackground(new java.awt.Color(140, 82, 255));
+        taOpcionB.setColumns(20);
+        taOpcionB.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        taOpcionB.setLineWrap(true);
+        taOpcionB.setRows(5);
+        taOpcionB.setWrapStyleWord(true);
+        taOpcionB.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        taOpcionB.setEnabled(false);
+        taOpcionB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                taOpcionBMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jOpcionBLayout = new javax.swing.GroupLayout(jOpcionB);
         jOpcionB.setLayout(jOpcionBLayout);
@@ -183,26 +229,36 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
             jOpcionBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jOpcionBLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
+                .addComponent(taOpcionB)
+                .addContainerGap())
         );
         jOpcionBLayout.setVerticalGroup(
             jOpcionBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jOpcionBLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                .addGap(14, 14, 14))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jOpcionBLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(taOpcionB, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        jFondo.add(jOpcionB, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 450, -1, -1));
+        jFondo.add(jOpcionB, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 450, -1, 100));
 
         jOpcionC.setBackground(new java.awt.Color(126, 217, 87));
         jOpcionC.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jLabel11.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("OPCION C");
+        taOpcionC.setEditable(false);
+        taOpcionC.setBackground(new java.awt.Color(126, 217, 87));
+        taOpcionC.setColumns(20);
+        taOpcionC.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        taOpcionC.setLineWrap(true);
+        taOpcionC.setRows(5);
+        taOpcionC.setWrapStyleWord(true);
+        taOpcionC.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        taOpcionC.setEnabled(false);
+        taOpcionC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                taOpcionCMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jOpcionCLayout = new javax.swing.GroupLayout(jOpcionC);
         jOpcionC.setLayout(jOpcionCLayout);
@@ -210,26 +266,36 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
             jOpcionCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jOpcionCLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
+                .addComponent(taOpcionC)
+                .addContainerGap())
         );
         jOpcionCLayout.setVerticalGroup(
             jOpcionCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jOpcionCLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                .addGap(14, 14, 14))
+                .addContainerGap()
+                .addComponent(taOpcionC, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jFondo.add(jOpcionC, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 570, 510, -1));
+        jFondo.add(jOpcionC, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 570, 510, 100));
 
         jOpcionD.setBackground(new java.awt.Color(255, 189, 89));
         jOpcionD.setPreferredSize(new java.awt.Dimension(510, 92));
 
-        jLabel12.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("OPCION D");
+        taOpcionD.setEditable(false);
+        taOpcionD.setBackground(new java.awt.Color(255, 189, 89));
+        taOpcionD.setColumns(20);
+        taOpcionD.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        taOpcionD.setLineWrap(true);
+        taOpcionD.setRows(5);
+        taOpcionD.setWrapStyleWord(true);
+        taOpcionD.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        taOpcionD.setEnabled(false);
+        taOpcionD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                taOpcionDMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jOpcionDLayout = new javax.swing.GroupLayout(jOpcionD);
         jOpcionD.setLayout(jOpcionDLayout);
@@ -237,18 +303,18 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
             jOpcionDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jOpcionDLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
+                .addComponent(taOpcionD)
+                .addContainerGap())
         );
         jOpcionDLayout.setVerticalGroup(
             jOpcionDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jOpcionDLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                .addGap(14, 14, 14))
+                .addContainerGap()
+                .addComponent(taOpcionD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jFondo.add(jOpcionD, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 570, -1, -1));
+        jFondo.add(jOpcionD, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 570, -1, 100));
 
         jImagen1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -286,7 +352,7 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
         jPregunta.setText("Pregunta sacada de la base de datos");
         jFondo.add(jPregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 660, 88));
 
-        getContentPane().add(jFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, -1, -1));
+        getContentPane().add(jFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -295,6 +361,22 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
         this.dispose();
         controladora.vistaManagement.loadStart();
     }//GEN-LAST:event_btnVolverInicioMouseClicked
+
+    private void taOpcionAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taOpcionAMouseClicked
+        respuestaDefinitiva(1);
+    }//GEN-LAST:event_taOpcionAMouseClicked
+
+    private void taOpcionBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taOpcionBMouseClicked
+        respuestaDefinitiva(2);
+    }//GEN-LAST:event_taOpcionBMouseClicked
+
+    private void taOpcionCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taOpcionCMouseClicked
+        respuestaDefinitiva(3);
+    }//GEN-LAST:event_taOpcionCMouseClicked
+
+    private void taOpcionDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taOpcionDMouseClicked
+        respuestaDefinitiva(4);
+    }//GEN-LAST:event_taOpcionDMouseClicked
 
     /**
      * @param args the command line arguments
@@ -337,12 +419,8 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
     private javax.swing.JPanel jFondo;
     private javax.swing.JPanel jImagen1;
     private javax.swing.JPanel jImagen2;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JPanel jOpcionA;
     private javax.swing.JPanel jOpcionB;
@@ -351,5 +429,9 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
     private javax.swing.JLabel jPregunta;
     private javax.swing.JLabel lblTurnoJugadores;
     private javax.swing.JPanel pnlTurnoJugador;
+    private javax.swing.JTextArea taOpcionA;
+    private javax.swing.JTextArea taOpcionB;
+    private javax.swing.JTextArea taOpcionC;
+    private javax.swing.JTextArea taOpcionD;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,11 +10,25 @@ package vistas;
  */
 public class Resultadov2 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Resultadov2
-     */
-    public Resultadov2() {
+    
+    public Resultadov2(int pJ1,int pJ2, int modoDeJuego) {
         initComponents();
+        labelPuntuacionJugador1.setText(String.valueOf(pJ1));
+        labelPuntuacionJugador2.setText(String.valueOf(pJ2));
+        if (modoDeJuego==1) {
+            labelJugador2.setVisible(false);
+            labelPuntuacionJugador2.setVisible(false);
+        }
+        if(pJ1==pJ2){
+            labelGanador.setText("EMPATE!!!");     
+        }else{
+            if(pJ1>pJ2){
+                labelGanador.setText("GANÓ El JUGADOR 1!!!!");     
+            }else{
+                labelGanador.setText("GANÓ El JUGADOR 2!!!!");     
+            }
+        }
+           
     }
 
     /**
@@ -83,19 +97,15 @@ public class Resultadov2 extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         labelJugador1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        labelJugador1.setForeground(new java.awt.Color(0, 0, 0));
         labelJugador1.setText("JUGADOR 1");
 
         labelPuntuacionJugador1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        labelPuntuacionJugador1.setForeground(new java.awt.Color(0, 0, 0));
         labelPuntuacionJugador1.setText("PUNTUACION");
 
         labelPuntuacionJugador2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        labelPuntuacionJugador2.setForeground(new java.awt.Color(0, 0, 0));
         labelPuntuacionJugador2.setText("PUNTUACION");
 
         labelJugador2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        labelJugador2.setForeground(new java.awt.Color(0, 0, 0));
         labelJugador2.setText("JUGADOR 2");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -132,7 +142,6 @@ public class Resultadov2 extends javax.swing.JFrame {
         panelGanador.setBackground(new java.awt.Color(102, 102, 255));
 
         labelGanador.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        labelGanador.setForeground(new java.awt.Color(0, 0, 0));
         labelGanador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelGanador.setText("GANÓ El JUGADOR 1/2!!!!");
 
@@ -158,6 +167,11 @@ public class Resultadov2 extends javax.swing.JFrame {
 
         btnVolverInicio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnVolverInicio.setText("Volver");
+        btnVolverInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverInicioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -183,40 +197,11 @@ public class Resultadov2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Resultadov2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Resultadov2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Resultadov2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Resultadov2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnVolverInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverInicioActionPerformed
+        this.dispose();
+        controladora.vistaManagement.loadStart();
+    }//GEN-LAST:event_btnVolverInicioActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Resultadov2().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Banner;
