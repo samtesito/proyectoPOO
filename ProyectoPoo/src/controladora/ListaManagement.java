@@ -88,12 +88,12 @@ public class ListaManagement {
     
     /// MANEJO DE MATERIALES
     
-    public void guardarMaterial(String nombre, double costoporarea, double costoporvolumen){  
+    public void AddMaterial(modelo.Material mat){
+        modelo.globalAccess.listaDeMateriales.add(mat);
+    }
+    public void guardarMaterial(){  
         JsonConector<modelo.Material> jConector = new JsonConector();
-        FileConector fConector = new FileConector();      
-        Material material = new Material(costoporarea,costoporvolumen,nombre);
-        modelo.globalAccess.listaDeMateriales.add(material);
+        FileConector fConector = new FileConector();
         fConector.writeFMaterial(jConector.WriteJson(modelo.globalAccess.listaDeMateriales));
     }
-    
 }

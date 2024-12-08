@@ -79,7 +79,7 @@ public class vistaManagement{
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Resultadov2(pJ1,pJ2,modoDeJuego).setVisible(true);
+                new Resultado(pJ1,pJ2,modoDeJuego).setVisible(true);
             }
         });
     }

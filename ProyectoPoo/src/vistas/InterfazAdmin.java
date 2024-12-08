@@ -13,6 +13,7 @@ import java.awt.Image;
 import java.io.File;
 import javax.swing.JOptionPane;
 import modelo.Pregunta;
+import modelo.Material;
 import java.util.InputMismatchException;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -29,7 +30,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
      */
     public InterfazAdmin() {
         initComponents();
-        
+        Font fuentenegrita = new Font("Arial",Font.BOLD,36);
+        preguntas.setFont(fuentenegrita);
         pestanas.setSelectedIndex(0);
         jTablePreguntas.setModel(controladora.vistaManagement.setModeloTablaPreguntas(false, ""));
         JTableHeader tableHeader = jTablePreguntas.getTableHeader();
@@ -126,21 +128,21 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jNombre = new javax.swing.JTextField();
         jCostoVolumen = new javax.swing.JTextField();
         jCostoArea = new javax.swing.JTextField();
-        lError1 = new javax.swing.JLabel();
+        lErrorMat = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPanelButtonGuide1 = new javax.swing.JPanel();
-        volver1 = new javax.swing.JButton();
+        volverMat = new javax.swing.JButton();
         guardarCambiosMat = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         editingCheck = new javax.swing.JCheckBox();
         menu1 = new javax.swing.JPanel();
-        catalogo = new javax.swing.JLabel();
+        preguntas = new javax.swing.JLabel();
         menu2 = new javax.swing.JPanel();
         materiales = new javax.swing.JLabel();
         menu3 = new javax.swing.JPanel();
-        Presupuesto = new javax.swing.JLabel();
+        presupuesto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -272,6 +274,12 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jTabMateriales.setMinimumSize(new java.awt.Dimension(1010, 582));
         jTabMateriales.setPreferredSize(new java.awt.Dimension(1010, 582));
         jTabMateriales.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPaneMateriales.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jScrollPaneMaterialesMousePressed(evt);
+            }
+        });
 
         jTableMateriales.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTableMateriales.setForeground(new java.awt.Color(123, 58, 0));
@@ -486,6 +494,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
         jPanelGuide.setBackground(new java.awt.Color(255, 242, 223));
 
+        Pregunta.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        Pregunta.setForeground(new java.awt.Color(123, 58, 0));
         Pregunta.setToolTipText("Ingresar enunciado de pregunta");
         Pregunta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -493,6 +503,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
             }
         });
 
+        Opcion1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        Opcion1.setForeground(new java.awt.Color(123, 58, 0));
         Opcion1.setToolTipText("Ingresar opcion 1");
         Opcion1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -500,6 +512,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
             }
         });
 
+        Opcion4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        Opcion4.setForeground(new java.awt.Color(123, 58, 0));
         Opcion4.setToolTipText("Ingresar opcion 4");
         Opcion4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -507,6 +521,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
             }
         });
 
+        Opcion3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        Opcion3.setForeground(new java.awt.Color(123, 58, 0));
         Opcion3.setToolTipText("Ingresar opcion 3");
         Opcion3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -514,6 +530,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
             }
         });
 
+        Opcion2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        Opcion2.setForeground(new java.awt.Color(123, 58, 0));
         Opcion2.setToolTipText("Ingresar opcion 2");
         Opcion2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -522,6 +540,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
         });
 
         buttonGroupOpcionCorrecta.add(jRadioButton1);
+        jRadioButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jRadioButton1.setForeground(new java.awt.Color(123, 58, 0));
         jRadioButton1.setText("Opcion 1:");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -530,12 +550,18 @@ public class InterfazAdmin extends javax.swing.JFrame {
         });
 
         buttonGroupOpcionCorrecta.add(jRadioButton2);
+        jRadioButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jRadioButton2.setForeground(new java.awt.Color(123, 58, 0));
         jRadioButton2.setText("Opcion 2:");
 
         buttonGroupOpcionCorrecta.add(jRadioButton3);
+        jRadioButton3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jRadioButton3.setForeground(new java.awt.Color(123, 58, 0));
         jRadioButton3.setText("Opcion 3:");
 
         buttonGroupOpcionCorrecta.add(jRadioButton4);
+        jRadioButton4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jRadioButton4.setForeground(new java.awt.Color(123, 58, 0));
         jRadioButton4.setText("Opcion 4:");
 
         lError.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -552,12 +578,13 @@ public class InterfazAdmin extends javax.swing.JFrame {
                     .addComponent(Pregunta, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
                     .addComponent(lError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelGuideLayout.createSequentialGroup()
-                        .addGroup(jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
+                        .addGroup(jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                            .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jRadioButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jRadioButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Opcion3)
                             .addComponent(Opcion2)
@@ -595,6 +622,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
         jPanelButtonGuide.setBackground(new java.awt.Color(255, 242, 223));
 
+        volver.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        volver.setForeground(new java.awt.Color(123, 58, 0));
         volver.setText("Atrás");
         volver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -607,6 +636,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
             }
         });
 
+        cargarImagen.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        cargarImagen.setForeground(new java.awt.Color(123, 58, 0));
         cargarImagen.setText("Cargar Imagen");
         cargarImagen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -619,6 +650,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
             }
         });
 
+        guardarCambios.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        guardarCambios.setForeground(new java.awt.Color(123, 58, 0));
         guardarCambios.setText("Guardar");
         guardarCambios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -637,16 +670,14 @@ public class InterfazAdmin extends javax.swing.JFrame {
             jPanelButtonGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelButtonGuideLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(cargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
-                .addGroup(jPanelButtonGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelButtonGuideLayout.createSequentialGroup()
-                        .addComponent(guardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButtonGuideLayout.createSequentialGroup()
-                        .addGap(436, 436, 436)
-                        .addComponent(volver, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addComponent(cargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(246, 246, 246)
+                .addComponent(guardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(352, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButtonGuideLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(volver, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanelButtonGuideLayout.setVerticalGroup(
             jPanelButtonGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -655,8 +686,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
                 .addGroup(jPanelButtonGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(volver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(volver, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -682,108 +713,83 @@ public class InterfazAdmin extends javax.swing.JFrame {
         });
 
         Background1.setBackground(new java.awt.Color(255, 242, 223));
+        Background1.setMinimumSize(new java.awt.Dimension(1000, 580));
+        Background1.setPreferredSize(new java.awt.Dimension(1000, 580));
         Background1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelGuide1.setBackground(new java.awt.Color(255, 242, 223));
+        jPanelGuide1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jNombre.setToolTipText("Ingresar enunciado de pregunta");
+        jNombre.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jNombre.setForeground(new java.awt.Color(123, 58, 0));
+        jNombre.setToolTipText("Ingresar nombre del material");
+        jNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jNombreMouseEntered(evt);
+            }
+        });
         jNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jNombreActionPerformed(evt);
             }
         });
+        jPanelGuide1.add(jNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 485, 55));
 
-        jCostoVolumen.setToolTipText("Ingresar opcion 3");
+        jCostoVolumen.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jCostoVolumen.setForeground(new java.awt.Color(123, 58, 0));
+        jCostoVolumen.setToolTipText("Ingresar costo por volumen");
         jCostoVolumen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCostoVolumenActionPerformed(evt);
             }
         });
+        jPanelGuide1.add(jCostoVolumen, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 486, 56));
 
-        jCostoArea.setToolTipText("Ingresar opcion 4");
+        jCostoArea.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jCostoArea.setForeground(new java.awt.Color(123, 58, 0));
+        jCostoArea.setToolTipText("Ingresar costo por área");
         jCostoArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCostoAreaActionPerformed(evt);
             }
         });
+        jPanelGuide1.add(jCostoArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 486, 55));
 
-        lError1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lError1.setForeground(new java.awt.Color(255, 0, 0));
-        lError1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lErrorMat.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lErrorMat.setForeground(new java.awt.Color(255, 0, 0));
+        lErrorMat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanelGuide1.add(lErrorMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 7, 620, -1));
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(123, 58, 0));
         jLabel10.setText("Costo por volumen");
+        jPanelGuide1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 269, -1));
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(123, 58, 0));
         jLabel11.setText("Costo por área");
+        jPanelGuide1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(123, 58, 0));
         jLabel12.setText("Nombre");
+        jPanelGuide1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
-        javax.swing.GroupLayout jPanelGuide1Layout = new javax.swing.GroupLayout(jPanelGuide1);
-        jPanelGuide1.setLayout(jPanelGuide1Layout);
-        jPanelGuide1Layout.setHorizontalGroup(
-            jPanelGuide1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGuide1Layout.createSequentialGroup()
-                .addGroup(jPanelGuide1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelGuide1Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGuide1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelGuide1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCostoArea, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCostoVolumen, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(117, 117, 117))
-            .addGroup(jPanelGuide1Layout.createSequentialGroup()
-                .addGroup(jPanelGuide1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelGuide1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(lError1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel12))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanelGuide1Layout.setVerticalGroup(
-            jPanelGuide1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelGuide1Layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(lError1)
-                .addGap(0, 0, 0)
-                .addGroup(jPanelGuide1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addGap(32, 32, 32)
-                .addGroup(jPanelGuide1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCostoVolumen, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addGap(39, 39, 39)
-                .addGroup(jPanelGuide1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCostoArea, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        Background1.add(jPanelGuide1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 810, 280));
+        Background1.add(jPanelGuide1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 810, 280));
 
         jPanelButtonGuide1.setBackground(new java.awt.Color(255, 242, 223));
 
-        volver1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        volver1.setForeground(new java.awt.Color(123, 58, 0));
-        volver1.setText("Atrás");
-        volver1.addMouseListener(new java.awt.event.MouseAdapter() {
+        volverMat.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        volverMat.setForeground(new java.awt.Color(123, 58, 0));
+        volverMat.setText("Atrás");
+        volverMat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                volver1MouseClicked(evt);
+                volverMatMouseClicked(evt);
             }
         });
-        volver1.addActionListener(new java.awt.event.ActionListener() {
+        volverMat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                volver1ActionPerformed(evt);
+                volverMatActionPerformed(evt);
             }
         });
 
@@ -806,10 +812,10 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jPanelButtonGuide1Layout.setHorizontalGroup(
             jPanelButtonGuide1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButtonGuide1Layout.createSequentialGroup()
-                .addGap(302, 302, 302)
+                .addContainerGap(311, Short.MAX_VALUE)
                 .addComponent(guardarCambiosMat, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 307, Short.MAX_VALUE)
-                .addComponent(volver1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(298, 298, 298)
+                .addComponent(volverMat, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
         );
         jPanelButtonGuide1Layout.setVerticalGroup(
@@ -817,12 +823,12 @@ public class InterfazAdmin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButtonGuide1Layout.createSequentialGroup()
                 .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(jPanelButtonGuide1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(volver1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(volverMat, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(guardarCambiosMat, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37))
         );
 
-        Background1.add(jPanelButtonGuide1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, 950, 130));
+        Background1.add(jPanelButtonGuide1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 950, 130));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(123, 58, 0));
@@ -833,11 +839,11 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jTabEditarMaterial.setLayout(jTabEditarMaterialLayout);
         jTabEditarMaterialLayout.setHorizontalGroup(
             jTabEditarMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Background1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Background1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jTabEditarMaterialLayout.setVerticalGroup(
             jTabEditarMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Background1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Background1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pestanas.addTab("tab4", jTabEditarMaterial);
@@ -863,9 +869,9 @@ public class InterfazAdmin extends javax.swing.JFrame {
             }
         });
 
-        catalogo.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        catalogo.setForeground(new java.awt.Color(78, 95, 23));
-        catalogo.setText("Preguntas");
+        preguntas.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        preguntas.setForeground(new java.awt.Color(78, 95, 23));
+        preguntas.setText("Preguntas");
 
         javax.swing.GroupLayout menu1Layout = new javax.swing.GroupLayout(menu1);
         menu1.setLayout(menu1Layout);
@@ -873,14 +879,14 @@ public class InterfazAdmin extends javax.swing.JFrame {
             menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu1Layout.createSequentialGroup()
                 .addContainerGap(46, Short.MAX_VALUE)
-                .addComponent(catalogo, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(preguntas, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
         menu1Layout.setVerticalGroup(
             menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu1Layout.createSequentialGroup()
                 .addContainerGap(82, Short.MAX_VALUE)
-                .addComponent(catalogo)
+                .addComponent(preguntas)
                 .addGap(56, 56, 56))
         );
 
@@ -923,9 +929,9 @@ public class InterfazAdmin extends javax.swing.JFrame {
             }
         });
 
-        Presupuesto.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        Presupuesto.setForeground(new java.awt.Color(78, 95, 23));
-        Presupuesto.setText("Presupuesto");
+        presupuesto.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        presupuesto.setForeground(new java.awt.Color(78, 95, 23));
+        presupuesto.setText("Presupuesto");
 
         javax.swing.GroupLayout menu3Layout = new javax.swing.GroupLayout(menu3);
         menu3.setLayout(menu3Layout);
@@ -933,14 +939,14 @@ public class InterfazAdmin extends javax.swing.JFrame {
             menu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu3Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(Presupuesto)
+                .addComponent(presupuesto)
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         menu3Layout.setVerticalGroup(
             menu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu3Layout.createSequentialGroup()
                 .addGap(71, 71, 71)
-                .addComponent(Presupuesto)
+                .addComponent(presupuesto)
                 .addContainerGap(97, Short.MAX_VALUE))
         );
 
@@ -961,6 +967,22 @@ public class InterfazAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu1MouseClicked
+        int actual = pestanas.getSelectedIndex();
+        Font fuentenegrita = new Font("Arial",Font.BOLD,36);
+        Font fuenteplain = new Font("Arial",Font.PLAIN,36);
+        switch (actual){ 
+            case 0,3:
+                preguntas.setFont(fuenteplain);
+                break;
+            case 1,4: 
+                materiales.setFont(fuenteplain);
+                break;
+            case 2:
+                presupuesto.setFont(fuenteplain);
+                break;
+        }
+        preguntas.setFont(fuentenegrita);
+        
         pestanas.setSelectedIndex(0);
         jTablePreguntas.setModel(controladora.vistaManagement.setModeloTablaPreguntas(false,""));
         JTableHeader tableHeader = jTablePreguntas.getTableHeader();
@@ -991,6 +1013,22 @@ public class InterfazAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_menu1MouseMoved
 
     private void menu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu2MouseClicked
+        int actual = pestanas.getSelectedIndex();
+        Font fuentenegrita = new Font("Arial",Font.BOLD,36);
+        Font fuenteplain = new Font("Arial",Font.PLAIN,36);
+        switch (actual){ 
+            case 0,3:
+                preguntas.setFont(fuenteplain);
+                break;
+            case 1,4: 
+                materiales.setFont(fuenteplain);
+                break;
+            case 2:
+                presupuesto.setFont(fuenteplain);
+                break;
+        }
+        materiales.setFont(fuentenegrita);
+        
         pestanas.setSelectedIndex(1);
         jTableMateriales.setModel(controladora.vistaManagement.setModeloTablaMateriales(false,""));
         JTableHeader tableHeader = jTableMateriales.getTableHeader();
@@ -1017,6 +1055,22 @@ public class InterfazAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_menu2MouseClicked
 
     private void menu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu3MouseClicked
+        int actual = pestanas.getSelectedIndex();
+        Font fuentenegrita = new Font("Arial",Font.BOLD,36);
+        Font fuenteplain = new Font("Arial",Font.PLAIN,36);
+        switch (actual){ 
+            case 0,3:
+                preguntas.setFont(fuenteplain);
+                break;
+            case 1,4: 
+                materiales.setFont(fuenteplain);
+                break;
+            case 2:
+                presupuesto.setFont(fuenteplain);
+                break;
+        }
+        presupuesto.setFont(fuentenegrita);
+        
         pestanas.setSelectedIndex(2);
     }//GEN-LAST:event_menu3MouseClicked
 
@@ -1050,6 +1104,14 @@ public class InterfazAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jCostosAdicionalesActionPerformed
 
     private void jButtonAgregarPreguntaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarPreguntaMouseClicked
+        Opcion1.setText("");
+        Opcion2.setText("");
+        Opcion3.setText("");
+        Opcion4.setText("");
+        Pregunta.setText("");
+        lError.setText("");
+        buttonGroupOpcionCorrecta.clearSelection();
+        imagen.setIcon(null);
         pestanas.setSelectedIndex(3);
         editingCheck.setSelected(false);
     }//GEN-LAST:event_jButtonAgregarPreguntaMouseClicked
@@ -1321,7 +1383,20 @@ public class InterfazAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jCalcularPresupuestoActionPerformed
 
     private void jTableMaterialesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMaterialesMousePressed
-        // TODO add your handling code here:
+        
+        pestanas.setSelectedIndex(4);
+        
+        //Numero de columna a la que le dieron click/INDICE DEL OBJETO EN EL ARRAYLIST
+        int location=jTableMateriales.getSelectedRow();
+        
+        // Mostrar las opciones actuales de la pregunta anterior
+        lErrorMat.setText("");
+        jNombre.setText(modelo.globalAccess.listaDeMateriales.get(location).getNombre());
+        jCostoVolumen.setText(String.valueOf(modelo.globalAccess.listaDeMateriales.get(location).getCostoporvolumen()));
+        jCostoArea.setText(String.valueOf(modelo.globalAccess.listaDeMateriales.get(location).getCostoporarea()));
+        
+        //para indicarle que estamos editando una pregunta que ya existe
+        editingCheck.setSelected(true); 
     }//GEN-LAST:event_jTableMaterialesMousePressed
 
     private void jButtonAgregarMaterialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarMaterialMouseClicked
@@ -1329,7 +1404,12 @@ public class InterfazAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAgregarMaterialMouseClicked
 
     private void jButtonAgregarMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarMaterialActionPerformed
-        // TODO add your handling code here:
+        jNombre.setText("");
+        jCostoVolumen.setText("");
+        jCostoArea.setText("");
+        lErrorMat.setText("");
+        pestanas.setSelectedIndex(4);
+        editingCheck.setSelected(false);
     }//GEN-LAST:event_jButtonAgregarMaterialActionPerformed
 
     private void jBuscadorDeMatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBuscadorDeMatMouseClicked
@@ -1356,24 +1436,58 @@ public class InterfazAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCostoVolumenActionPerformed
 
-    private void volver1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volver1MouseClicked
+    private void volverMatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMatMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_volver1MouseClicked
+    }//GEN-LAST:event_volverMatMouseClicked
 
-    private void volver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volver1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_volver1ActionPerformed
+    private void volverMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverMatActionPerformed
+        // Limpiar todas las casillas de texto
+        jNombre.setText("");
+        jCostoVolumen.setText("");
+        jCostoArea.setText("");
+        lErrorMat.setText("");
+        pestanas.setSelectedIndex(1);
+    }//GEN-LAST:event_volverMatActionPerformed
 
     private void guardarCambiosMatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarCambiosMatMouseClicked
         // GUARDAR CAMBIOS
-        String costoporvolumen, costoporarea, nombre = "";
+        double costoporvolumen, costoporarea;
+        String nombre = "";
         ListaManagement vMan = new ListaManagement();
        
         if(jNombre.getText().isBlank() || jCostoVolumen.getText().isBlank() || jCostoArea.getText().isBlank()){
             lError.setText("Se deben rellenar todos los campos antes de guardar.");
             return;
         }
-        
+        // GUARDAR CAMBIOS EN VARIABLES
+        try{
+            nombre = jNombre.getText();
+            costoporvolumen = Double.valueOf(jCostoVolumen.getText());
+            costoporarea = Double.valueOf(jCostoArea.getText());
+        }catch (NumberFormatException excepcion){
+            lErrorMat.setText("¡Error! Los costos deben ser valores numéricos");
+            return;
+        }
+        // GUARDANDO MATERIAL DEPENDIENDO DE SI ES EDICION O NO
+        if(!editingCheck.isSelected()){
+            // AGREGANDO NUEVO MATERIAL
+            Material mat  = new Material(costoporvolumen,costoporarea,nombre);
+            vMan.AddMaterial(mat);
+        }else{
+            // EDITANDO PREGUNTA
+            int location=jTableMateriales.getSelectedRow();
+            modelo.globalAccess.listaDeMateriales.get(location).setCostoporvolumen(costoporvolumen);
+            modelo.globalAccess.listaDeMateriales.get(location).setCostoporarea(costoporarea);
+            modelo.globalAccess.listaDeMateriales.get(location).setNombre(nombre);               
+        }
+        vMan.guardarMaterial();
+        // RESETEAR LOS TEXTOS Y OPCIONES
+        jNombre.setText("");
+        jCostoVolumen.setText("");
+        jCostoArea.setText("");
+        lErrorMat.setText("");
+        // VOLVER AL CUADRO
+        pestanas.setSelectedIndex(1);
     }//GEN-LAST:event_guardarCambiosMatMouseClicked
 
     private void guardarCambiosMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarCambiosMatActionPerformed
@@ -1383,6 +1497,14 @@ public class InterfazAdmin extends javax.swing.JFrame {
     private void jTabEditarMaterialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabEditarMaterialMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jTabEditarMaterialMouseClicked
+
+    private void jScrollPaneMaterialesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPaneMaterialesMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jScrollPaneMaterialesMousePressed
+
+    private void jNombreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNombreMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jNombreMouseEntered
 
     /**
      * @param args the command line arguments
@@ -1399,10 +1521,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField Opcion3;
     private javax.swing.JTextField Opcion4;
     private javax.swing.JTextField Pregunta;
-    private javax.swing.JLabel Presupuesto;
     private javax.swing.ButtonGroup buttonGroupOpcionCorrecta;
     private javax.swing.JButton cargarImagen;
-    private javax.swing.JLabel catalogo;
     private javax.swing.JCheckBox editingCheck;
     private javax.swing.JButton guardarCambios;
     private javax.swing.JButton guardarCambiosMat;
@@ -1459,13 +1579,15 @@ public class InterfazAdmin extends javax.swing.JFrame {
     private javax.swing.JTable jTableMateriales;
     private javax.swing.JTable jTablePreguntas;
     private javax.swing.JLabel lError;
-    private javax.swing.JLabel lError1;
+    private javax.swing.JLabel lErrorMat;
     private javax.swing.JLabel materiales;
     private javax.swing.JPanel menu1;
     private javax.swing.JPanel menu2;
     private javax.swing.JPanel menu3;
     private javax.swing.JTabbedPane pestanas;
+    private javax.swing.JLabel preguntas;
+    private javax.swing.JLabel presupuesto;
     private javax.swing.JButton volver;
-    private javax.swing.JButton volver1;
+    private javax.swing.JButton volverMat;
     // End of variables declaration//GEN-END:variables
 }
