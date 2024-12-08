@@ -44,6 +44,7 @@ public class Resultadov2 extends javax.swing.JFrame {
         Banner = new javax.swing.JPanel();
         labelNombrePagina = new javax.swing.JLabel();
         labelResultado = new javax.swing.JLabel();
+        jLabelLogo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         labelJugador1 = new javax.swing.JLabel();
         labelPuntuacionJugador1 = new javax.swing.JLabel();
@@ -57,55 +58,44 @@ public class Resultadov2 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelFondo.setBackground(new java.awt.Color(255, 255, 255));
+        panelFondo.setBackground(new java.awt.Color(255, 242, 223));
         panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Banner.setBackground(new java.awt.Color(176, 176, 176));
+        Banner.setBackground(new java.awt.Color(78, 95, 23));
         Banner.setPreferredSize(new java.awt.Dimension(1280, 100));
+        Banner.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelNombrePagina.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        labelNombrePagina.setForeground(new java.awt.Color(255, 255, 255));
+        labelNombrePagina.setForeground(new java.awt.Color(213, 223, 181));
         labelNombrePagina.setText("CABINAS AZULES");
+        Banner.add(labelNombrePagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 436, 36));
 
         labelResultado.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
-        labelResultado.setForeground(new java.awt.Color(255, 255, 255));
+        labelResultado.setForeground(new java.awt.Color(213, 223, 181));
         labelResultado.setText("Resultado");
+        Banner.add(labelResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 436, 36));
 
-        javax.swing.GroupLayout BannerLayout = new javax.swing.GroupLayout(Banner);
-        Banner.setLayout(BannerLayout);
-        BannerLayout.setHorizontalGroup(
-            BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BannerLayout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addGroup(BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelNombrePagina, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(513, Short.MAX_VALUE))
-        );
-        BannerLayout.setVerticalGroup(
-            BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BannerLayout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(labelNombrePagina, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
-        );
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/glasses.png"))); // NOI18N
+        Banner.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         panelFondo.add(Banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 140));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 242, 223));
 
-        labelJugador1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        labelJugador1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        labelJugador1.setForeground(new java.awt.Color(123, 58, 0));
         labelJugador1.setText("JUGADOR 1");
 
-        labelPuntuacionJugador1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        labelPuntuacionJugador1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        labelPuntuacionJugador1.setForeground(new java.awt.Color(123, 58, 0));
         labelPuntuacionJugador1.setText("PUNTUACION");
 
-        labelPuntuacionJugador2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        labelPuntuacionJugador2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        labelPuntuacionJugador2.setForeground(new java.awt.Color(123, 58, 0));
         labelPuntuacionJugador2.setText("PUNTUACION");
 
-        labelJugador2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        labelJugador2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        labelJugador2.setForeground(new java.awt.Color(123, 58, 0));
         labelJugador2.setText("JUGADOR 2");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -121,27 +111,28 @@ public class Resultadov2 extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelPuntuacionJugador2)
                     .addComponent(labelPuntuacionJugador1))
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelJugador1)
                     .addComponent(labelPuntuacionJugador1))
-                .addGap(56, 56, 56)
+                .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelJugador2)
                     .addComponent(labelPuntuacionJugador2))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         panelFondo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 620, 160));
 
         panelGanador.setBackground(new java.awt.Color(102, 102, 255));
 
-        labelGanador.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        labelGanador.setFont(new java.awt.Font("Arial", 0, 40)); // NOI18N
+        labelGanador.setForeground(new java.awt.Color(255, 255, 255));
         labelGanador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelGanador.setText("GANÓ El JUGADOR 1/2!!!!");
 
@@ -149,23 +140,24 @@ public class Resultadov2 extends javax.swing.JFrame {
         panelGanador.setLayout(panelGanadorLayout);
         panelGanadorLayout.setHorizontalGroup(
             panelGanadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelGanadorLayout.createSequentialGroup()
-                .addComponent(labelGanador, javax.swing.GroupLayout.PREFERRED_SIZE, 1059, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGanadorLayout.createSequentialGroup()
+                .addGap(0, 1, Short.MAX_VALUE)
+                .addComponent(labelGanador, javax.swing.GroupLayout.PREFERRED_SIZE, 1059, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelGanadorLayout.setVerticalGroup(
             panelGanadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelGanadorLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(44, 44, 44)
                 .addComponent(labelGanador)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
-        panelFondo.add(panelGanador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 1060, 150));
+        panelFondo.add(panelGanador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 1060, 130));
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 255));
 
-        btnVolverInicio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnVolverInicio.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnVolverInicio.setForeground(new java.awt.Color(123, 58, 0));
         btnVolverInicio.setText("Volver");
         btnVolverInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,20 +169,20 @@ public class Resultadov2 extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(490, 490, 490)
-                .addComponent(btnVolverInicio)
-                .addContainerGap(485, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(460, Short.MAX_VALUE)
+                .addComponent(btnVolverInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(434, 434, 434))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(btnVolverInicio)
-                .addContainerGap(12, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addComponent(btnVolverInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
 
-        panelFondo.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 1060, 70));
+        panelFondo.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 1060, 100));
 
         getContentPane().add(panelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 550));
 
@@ -206,6 +198,7 @@ public class Resultadov2 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Banner;
     private javax.swing.JButton btnVolverInicio;
+    private javax.swing.JLabel jLabelLogo;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel labelGanador;
