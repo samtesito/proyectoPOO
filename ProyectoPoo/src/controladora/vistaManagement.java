@@ -57,7 +57,7 @@ public class vistaManagement{
             JsonElement jsonElement = gson.toJsonTree(Usuario);
             modelo.globalAccess.listaDeUsuarios.add(gson.fromJson(jsonElement, Usuario.class));
         }
-        for(Object material : lTempUsuario){
+        for(Object material : lTempMaterial){
             JsonElement jsonElement = gson.toJsonTree(material);
             modelo.globalAccess.listaDeMateriales.add(gson.fromJson(jsonElement, Material.class));
         }
@@ -126,6 +126,29 @@ public class vistaManagement{
             for(modelo.Pregunta pregunta : modelo.globalAccess.listaDePreguntas){
                 if(pregunta.getEnunciado().toLowerCase().contains(text.toLowerCase())){
                     model.addRow(new Object[]{modelo.globalAccess.listaDePreguntas.indexOf(pregunta), pregunta.getEnunciado(), pregunta.getPorcentajedeacierto()});
+                }
+            }
+        }
+        
+        return model;
+    }     
+    public static DefaultTableModel setModeloTablaMateriales(boolean option, String text){
+        Object[] header = new Object[]{"Nro", "Material", "Costo por volumen", "Costo por Mts2"};
+        DefaultTableModel model;
+        model = new DefaultTableModel(header, 0){
+            @Override            
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        if(!option){
+            for(modelo.Material material : modelo.globalAccess.listaDeMateriales){
+                model.addRow(new Object[]{modelo.globalAccess.listaDeMateriales.indexOf(material), material.getNombre(), material.getCostoporvolumen(), material.getCostoporarea()});
+            }
+        }else   {
+            for(modelo.Material material : modelo.globalAccess.listaDeMateriales){
+                if(material.getNombre().toLowerCase().contains(text.toLowerCase())){
+                    model.addRow(new Object[]{modelo.globalAccess.listaDeMateriales.indexOf(material), material.getNombre(), material.getCostoporvolumen(), material.getCostoporarea()});
                 }
             }
         }

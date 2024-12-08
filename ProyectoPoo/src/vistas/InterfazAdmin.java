@@ -992,6 +992,28 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
     private void menu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu2MouseClicked
         pestanas.setSelectedIndex(1);
+        jTableMateriales.setModel(controladora.vistaManagement.setModeloTablaMateriales(false,""));
+        JTableHeader tableHeader = jTableMateriales.getTableHeader();
+        Font headerFont = new Font("Arial", Font.BOLD, 18);
+        float[] hsbColor = new float[3];
+        Color.RGBtoHSB(163, 58, 0, hsbColor);
+        tableHeader.setForeground(Color.getHSBColor(hsbColor[0],hsbColor[1],hsbColor[2]));
+        tableHeader.setFont(headerFont);
+        
+        
+        jTableMateriales.getColumnModel().getColumn(0).setPreferredWidth(40);
+        jTableMateriales.getColumnModel().getColumn(1).setPreferredWidth(600);
+        jTableMateriales.getColumnModel().getColumn(2).setPreferredWidth(100);
+        jTableMateriales.getColumnModel().getColumn(3).setPreferredWidth(100);
+        jTableMateriales.setAutoResizeMode(jTableMateriales.AUTO_RESIZE_LAST_COLUMN);
+        jTableMateriales.setRowHeight(20);
+        jScrollPaneMateriales.setVisible(true);
+        jTableMateriales.setVisible(true);
+        
+        
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        jTableMateriales.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
     }//GEN-LAST:event_menu2MouseClicked
 
     private void menu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu3MouseClicked
