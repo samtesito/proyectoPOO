@@ -5,15 +5,13 @@
         <group>
             <file>file:/C:/Users/apari/OneDrive/Documents/NetBeansProjects/proyectoPOO/ProyectoPoo/src/vistas/vistaJuegoPreguntas.java</file>
             <file>file:/C:/Users/apari/OneDrive/Documents/NetBeansProjects/proyectoPOO/ProyectoPoo/src/vistas/Start.java</file>
+            <file>file:/C:/Users/apari/OneDrive/Documents/NetBeansProjects/proyectoPOO/ProyectoPoo/src/modelo/Material.java</file>
             <file>file:/C:/Users/apari/OneDrive/Documents/NetBeansProjects/proyectoPOO/ProyectoPoo/src/vistas/InterfazAdmin.java</file>
-            <file>file:/C:/Users/apari/OneDrive/Documents/NetBeansProjects/proyectoPOO/ProyectoPoo/src/vistas/Resultado.java</file>
-            <file>file:/C:/Users/apari/OneDrive/Documents/NetBeansProjects/proyectoPOO/ProyectoPoo/src/modelo/FileConector.java</file>
-            <file>file:/C:/Users/apari/OneDrive/Documents/NetBeansProjects/proyectoPOO/ProyectoPoo/src/modelo/JsonConector.java</file>
+            <file>file:/C:/Users/apari/OneDrive/Documents/NetBeansProjects/proyectoPOO/ProyectoPoo/src/controladora/Presupuesto.java</file>
             <file>file:/C:/Users/apari/OneDrive/Documents/NetBeansProjects/proyectoPOO/ProyectoPoo/src/controladora/vistaManagement.java</file>
-            <file>file:/C:/Users/apari/OneDrive/Documents/NetBeansProjects/proyectoPOO/ProyectoPoo/src/modelo/Pregunta.java</file>
             <file>file:/C:/Users/apari/OneDrive/Documents/NetBeansProjects/proyectoPOO/ProyectoPoo/src/controladora/ListaManagement.java</file>
-            <file>file:/C:/Users/apari/OneDrive/Documents/NetBeansProjects/proyectoPOO/ProyectoPoo/src/vistas/Resultadov2.java</file>
-            <file>file:/C:/Users/apari/OneDrive/Documents/NetBeansProjects/proyectoPOO/ProyectoPoo/src/modelo/globalAccess.java</file>
+            <file>file:/C:/Users/apari/OneDrive/Documents/NetBeansProjects/proyectoPOO/ProyectoPoo/src/modelo/Pregunta.java</file>
+            <file>file:/C:/Users/apari/OneDrive/Documents/NetBeansProjects/proyectoPOO/ProyectoPoo/src/vistas/InicioDeSesion.java</file>
         </group>
     </open-files>
 </project-private>

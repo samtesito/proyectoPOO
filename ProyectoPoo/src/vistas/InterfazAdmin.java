@@ -92,9 +92,9 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jTabPresupuesto = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         jInstruccion = new javax.swing.JLabel();
-        jSeleccionarMaterial1 = new javax.swing.JComboBox<>();
-        jSeleccionarMaterial2 = new javax.swing.JComboBox<>();
-        jSeleccionarMaterial3 = new javax.swing.JComboBox<>();
+        jSeleccionarMaterialSuelo = new javax.swing.JComboBox<>();
+        jSeleccionarMaterialTecho = new javax.swing.JComboBox<>();
+        jSeleccionarMaterialParedes = new javax.swing.JComboBox<>();
         jCostosAdicionales = new javax.swing.JTextField();
         jCalcularPresupuesto = new javax.swing.JButton();
         jResultadoPan = new javax.swing.JPanel();
@@ -122,6 +122,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
         volver = new javax.swing.JButton();
         cargarImagen = new javax.swing.JButton();
         guardarCambios = new javax.swing.JButton();
+        Eliminar = new javax.swing.JButton();
         jTabEditarMaterial = new javax.swing.JPanel();
         Background1 = new javax.swing.JPanel();
         jPanelGuide1 = new javax.swing.JPanel();
@@ -135,6 +136,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jPanelButtonGuide1 = new javax.swing.JPanel();
         volverMat = new javax.swing.JButton();
         guardarCambiosMat = new javax.swing.JButton();
+        Borrar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         editingCheck = new javax.swing.JCheckBox();
         menu1 = new javax.swing.JPanel();
@@ -368,25 +370,25 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jInstruccion.setText("Seleccione los materiales a utilizar");
         jPanel18.add(jInstruccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, -1));
 
-        jSeleccionarMaterial1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jSeleccionarMaterial1.setForeground(new java.awt.Color(123, 58, 0));
-        jSeleccionarMaterial1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel18.add(jSeleccionarMaterial1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, 580, 50));
+        jSeleccionarMaterialSuelo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jSeleccionarMaterialSuelo.setForeground(new java.awt.Color(123, 58, 0));
+        jSeleccionarMaterialSuelo.setToolTipText("");
+        jPanel18.add(jSeleccionarMaterialSuelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, 580, 50));
 
-        jSeleccionarMaterial2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jSeleccionarMaterial2.setForeground(new java.awt.Color(123, 58, 0));
-        jSeleccionarMaterial2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jSeleccionarMaterial2.addActionListener(new java.awt.event.ActionListener() {
+        jSeleccionarMaterialTecho.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jSeleccionarMaterialTecho.setForeground(new java.awt.Color(123, 58, 0));
+        jSeleccionarMaterialTecho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jSeleccionarMaterialTecho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jSeleccionarMaterial2ActionPerformed(evt);
+                jSeleccionarMaterialTechoActionPerformed(evt);
             }
         });
-        jPanel18.add(jSeleccionarMaterial2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 580, 50));
+        jPanel18.add(jSeleccionarMaterialTecho, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 580, 50));
 
-        jSeleccionarMaterial3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jSeleccionarMaterial3.setForeground(new java.awt.Color(123, 58, 0));
-        jSeleccionarMaterial3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel18.add(jSeleccionarMaterial3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 580, 50));
+        jSeleccionarMaterialParedes.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jSeleccionarMaterialParedes.setForeground(new java.awt.Color(123, 58, 0));
+        jSeleccionarMaterialParedes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel18.add(jSeleccionarMaterialParedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 580, 50));
 
         jCostosAdicionales.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jCostosAdicionales.setForeground(new java.awt.Color(123, 58, 0));
@@ -581,9 +583,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
                         .addGroup(jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                             .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jRadioButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jRadioButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jRadioButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jRadioButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanelGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Opcion3)
@@ -664,6 +665,20 @@ public class InterfazAdmin extends javax.swing.JFrame {
             }
         });
 
+        Eliminar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Eliminar.setForeground(new java.awt.Color(123, 58, 0));
+        Eliminar.setText("Eliminar");
+        Eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EliminarMouseClicked(evt);
+            }
+        });
+        Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelButtonGuideLayout = new javax.swing.GroupLayout(jPanelButtonGuide);
         jPanelButtonGuide.setLayout(jPanelButtonGuideLayout);
         jPanelButtonGuideLayout.setHorizontalGroup(
@@ -671,9 +686,11 @@ public class InterfazAdmin extends javax.swing.JFrame {
             .addGroup(jPanelButtonGuideLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(cargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(246, 246, 246)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
                 .addComponent(guardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(352, Short.MAX_VALUE))
+                .addGap(191, 191, 191)
+                .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButtonGuideLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(volver, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -685,7 +702,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanelButtonGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(volver, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -807,14 +825,30 @@ public class InterfazAdmin extends javax.swing.JFrame {
             }
         });
 
+        Borrar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Borrar.setForeground(new java.awt.Color(123, 58, 0));
+        Borrar.setText("Eliminar");
+        Borrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BorrarMouseClicked(evt);
+            }
+        });
+        Borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BorrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelButtonGuide1Layout = new javax.swing.GroupLayout(jPanelButtonGuide1);
         jPanelButtonGuide1.setLayout(jPanelButtonGuide1Layout);
         jPanelButtonGuide1Layout.setHorizontalGroup(
             jPanelButtonGuide1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButtonGuide1Layout.createSequentialGroup()
-                .addContainerGap(311, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
+                .addComponent(Borrar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                 .addComponent(guardarCambiosMat, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(298, 298, 298)
+                .addGap(249, 249, 249)
                 .addComponent(volverMat, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
         );
@@ -824,7 +858,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(jPanelButtonGuide1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(volverMat, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(guardarCambiosMat, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(guardarCambiosMat, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Borrar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37))
         );
 
@@ -960,7 +995,9 @@ public class InterfazAdmin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPaneFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPaneFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 739, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -1071,6 +1108,10 @@ public class InterfazAdmin extends javax.swing.JFrame {
         }
         presupuesto.setFont(fuentenegrita);
         
+        jSeleccionarMaterialSuelo.setModel(controladora.vistaManagement.setModeloCBMateriales());
+        jSeleccionarMaterialTecho.setModel(controladora.vistaManagement.setModeloCBMateriales());
+        jSeleccionarMaterialParedes.setModel(controladora.vistaManagement.setModeloCBMateriales());
+
         pestanas.setSelectedIndex(2);
     }//GEN-LAST:event_menu3MouseClicked
 
@@ -1095,9 +1136,9 @@ public class InterfazAdmin extends javax.swing.JFrame {
         controladora.vistaManagement.loadStart();
     }//GEN-LAST:event_jButtonAgregarPregunta1MouseClicked
 
-    private void jSeleccionarMaterial2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSeleccionarMaterial2ActionPerformed
+    private void jSeleccionarMaterialTechoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSeleccionarMaterialTechoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jSeleccionarMaterial2ActionPerformed
+    }//GEN-LAST:event_jSeleccionarMaterialTechoActionPerformed
 
     private void jCostosAdicionalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCostosAdicionalesActionPerformed
         // TODO add your handling code here:
@@ -1113,6 +1154,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
         buttonGroupOpcionCorrecta.clearSelection();
         imagen.setIcon(null);
         pestanas.setSelectedIndex(3);
+        Eliminar.setVisible(false);
         editingCheck.setSelected(false);
     }//GEN-LAST:event_jButtonAgregarPreguntaMouseClicked
 
@@ -1299,6 +1341,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
         pestanas.setSelectedIndex(3); 
         
+        Eliminar.setVisible(true);
         //Numero de columna a la que le dieron click/INDICE DEL OBJETO EN EL ARRAYLIST
         int location=jTablePreguntas.getSelectedRow();
         
@@ -1375,10 +1418,15 @@ public class InterfazAdmin extends javax.swing.JFrame {
     private void jCalcularPresupuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCalcularPresupuestoActionPerformed
         try{
             controladora.Presupuesto presup = new controladora.Presupuesto();
-            String resultado = String.valueOf(presup.calcularPresupuesto(jSeleccionarMaterial1, jSeleccionarMaterial2, jSeleccionarMaterial1, jCostosAdicionales));
+            if(jSeleccionarMaterialSuelo.getSelectedIndex()>modelo.globalAccess.listaDeMateriales.size() || jSeleccionarMaterialTecho.getSelectedIndex()>modelo.globalAccess.listaDeMateriales.size() || jSeleccionarMaterialSuelo.getSelectedIndex()>modelo.globalAccess.listaDeMateriales.size() || jSeleccionarMaterialSuelo.getSelectedIndex()<0 || jSeleccionarMaterialTecho.getSelectedIndex()<0 || jSeleccionarMaterialSuelo.getSelectedIndex()<0){
+                throw new ArrayIndexOutOfBoundsException("¡Error! Debe seleccionar opciones validas.");
+            }
+            String resultado = String.valueOf(presup.calcularPresupuesto(jSeleccionarMaterialSuelo, jSeleccionarMaterialTecho, jSeleccionarMaterialSuelo, jCostosAdicionales));
             jResultado.setText(String.valueOf(resultado));
         }catch (InputMismatchException excepcion){
             jError.setText("¡Error! Los costos adicionales sólo pueden ser numeros");
+        }catch (ArrayIndexOutOfBoundsException excepcion){
+            jError.setText(excepcion.getLocalizedMessage());
         }
     }//GEN-LAST:event_jCalcularPresupuestoActionPerformed
 
@@ -1395,6 +1443,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jCostoVolumen.setText(String.valueOf(modelo.globalAccess.listaDeMateriales.get(location).getCostoporvolumen()));
         jCostoArea.setText(String.valueOf(modelo.globalAccess.listaDeMateriales.get(location).getCostoporarea()));
         
+        Borrar.setVisible(true);
         //para indicarle que estamos editando una pregunta que ya existe
         editingCheck.setSelected(true); 
     }//GEN-LAST:event_jTableMaterialesMousePressed
@@ -1408,6 +1457,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jCostoVolumen.setText("");
         jCostoArea.setText("");
         lErrorMat.setText("");
+        Borrar.setVisible(false);
         pestanas.setSelectedIndex(4);
         editingCheck.setSelected(false);
     }//GEN-LAST:event_jButtonAgregarMaterialActionPerformed
@@ -1446,7 +1496,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jCostoVolumen.setText("");
         jCostoArea.setText("");
         lErrorMat.setText("");
-        pestanas.setSelectedIndex(1);
+        //pestanas.setSelectedIndex(1);
+        menu2MouseClicked(null);
     }//GEN-LAST:event_volverMatActionPerformed
 
     private void guardarCambiosMatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarCambiosMatMouseClicked
@@ -1487,7 +1538,9 @@ public class InterfazAdmin extends javax.swing.JFrame {
         jCostoArea.setText("");
         lErrorMat.setText("");
         // VOLVER AL CUADRO
-        pestanas.setSelectedIndex(1);
+        //pestanas.setSelectedIndex(1);
+        
+        menu2MouseClicked(null);
     }//GEN-LAST:event_guardarCambiosMatMouseClicked
 
     private void guardarCambiosMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarCambiosMatActionPerformed
@@ -1506,6 +1559,30 @@ public class InterfazAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jNombreMouseEntered
 
+    private void EliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EliminarMouseClicked
+
+    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+        int location=jTablePreguntas.getSelectedRow();
+        ListaManagement vMan = new ListaManagement();
+        modelo.globalAccess.listaDePreguntas.remove(location);
+        vMan.guardarPregunta();
+        menu1MouseClicked(null);
+    }//GEN-LAST:event_EliminarActionPerformed
+
+    private void BorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BorrarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BorrarMouseClicked
+
+    private void BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarActionPerformed
+        int location=jTableMateriales.getSelectedRow();
+        ListaManagement vMan = new ListaManagement();
+        modelo.globalAccess.listaDeMateriales.remove(location);
+        vMan.guardarMaterial();
+        menu2MouseClicked(null);
+    }//GEN-LAST:event_BorrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1516,6 +1593,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel Background;
     private javax.swing.JPanel Background1;
     private javax.swing.JPanel Banner;
+    private javax.swing.JButton Borrar;
+    private javax.swing.JButton Eliminar;
     private javax.swing.JTextField Opcion1;
     private javax.swing.JTextField Opcion2;
     private javax.swing.JTextField Opcion3;
@@ -1568,9 +1647,9 @@ public class InterfazAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jResultadoPan;
     private javax.swing.JScrollPane jScrollPaneMateriales;
     private javax.swing.JScrollPane jScrollPanePreguntas;
-    private javax.swing.JComboBox<String> jSeleccionarMaterial1;
-    private javax.swing.JComboBox<String> jSeleccionarMaterial2;
-    private javax.swing.JComboBox<String> jSeleccionarMaterial3;
+    private javax.swing.JComboBox<String> jSeleccionarMaterialParedes;
+    private javax.swing.JComboBox<String> jSeleccionarMaterialSuelo;
+    private javax.swing.JComboBox<String> jSeleccionarMaterialTecho;
     private javax.swing.JPanel jTabEditarMaterial;
     private javax.swing.JPanel jTabEditarPregunta;
     private javax.swing.JPanel jTabMateriales;

@@ -53,6 +53,7 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
             loadPregunta(lManagement.getPregunta(lPreguntas[ipregunta]));
         }else{
             this.dispose();
+            lManagement.guardarPregunta();
             controladora.vistaManagement.loadResultado(pJ1,pJ2,modoDeJuego);
         }
     }
@@ -66,12 +67,14 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
     }
     public void respuestaDefinitiva(int vOpcion){
         if(pActual.getRespuestacorrecta()==vOpcion){
+            pActual.setAciertos(pActual.getAciertos()+1);
             if((ipregunta%modoDeJuego)==0){
                 pJ1++;
             }else{
                 pJ2++; 
             }
         }
+        pActual.setUsos(pActual.getUsos()+1);
         loadNextPregunta();
     }
 

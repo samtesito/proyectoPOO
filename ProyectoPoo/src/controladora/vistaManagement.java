@@ -154,7 +154,21 @@ public class vistaManagement{
         }
         
         return model;
-    }
+    } 
+    public static javax.swing.DefaultComboBoxModel setModeloCBMateriales(){
+        
+        ArrayList<String> lTemp = new ArrayList<String>();
+        
+        for(Material oMat : modelo.globalAccess.listaDeMateriales){
+            lTemp.add(oMat.getNombre());
+        }
+        
+        String[] vArray = new String[1];
+        vArray = lTemp.toArray(vArray);
+        javax.swing.DefaultComboBoxModel model;
+        model = new javax.swing.DefaultComboBoxModel<String>(vArray);
+        return model;
+    } 
     //////
     
     public static void loadInterfazAdmin(){           

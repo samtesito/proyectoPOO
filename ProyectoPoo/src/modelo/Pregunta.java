@@ -87,7 +87,7 @@ public class Pregunta {
     
     public double getPorcentajedeacierto(){
         if (this.usos >0) {
-            return aciertos/usos;
+            return 100*aciertos/usos;
         }else{
             return 0;
         }

@@ -23,8 +23,17 @@ public class Presupuesto {
         int indicepared = pared.getSelectedIndex();
         int indicepiso = piso.getSelectedIndex();
         double costosadicionales;
-        if (aniadidos.getText()==". . .") costosadicionales = 0;  
-        else costosadicionales = Double.valueOf(aniadidos.getText());
+        if(indicetecho>modelo.globalAccess.listaDeMateriales.size() || indicepared>modelo.globalAccess.listaDeMateriales.size() || indicepiso>modelo.globalAccess.listaDeMateriales.size()){
+            return 0;
+        }
+        try{
+            costosadicionales = Double.parseDouble(aniadidos.getText());
+        }catch(NumberFormatException e){
+            costosadicionales=0;
+        }catch(Exception e){
+            costosadicionales=0;
+        }
+        
         double resultadoparcial = calcularPresupuestico(modelo.globalAccess.listaDeMateriales.get(indicepared),
                 modelo.globalAccess.listaDeMateriales.get(indicetecho) , 
                 modelo.globalAccess.listaDeMateriales.get(indicepiso));
