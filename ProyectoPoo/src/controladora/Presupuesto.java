@@ -14,9 +14,7 @@ public class Presupuesto {
     private double calcularPresupuestoTecho(double costoporarea) { return (13.95*costoporarea); }
     private double calcularPresupuestoPiso(double costoporarea){ return (9.42*costoporarea);}
     private double calcularPresupuestico(modelo.Material pared, modelo.Material techo, modelo.Material piso) {
-        return (calcularPresupuestoParedes(pared.getCostoporvolumen())
-                +calcularPresupuestoTecho(techo.getCostoporarea())
-                +calcularPresupuestoPiso(piso.getCostoporarea()));
+        return ((calcularPresupuestoParedes(pared.getCostoporvolumen())+calcularPresupuestoTecho(techo.getCostoporarea())+calcularPresupuestoPiso(piso.getCostoporarea())));
     }   
     public double calcularPresupuesto(javax.swing.JComboBox techo, javax.swing.JComboBox pared, javax.swing.JComboBox piso, javax.swing.JTextField aniadidos){
         int indicetecho = techo.getSelectedIndex();
@@ -38,7 +36,7 @@ public class Presupuesto {
         double resultadoparcial = calcularPresupuestico(modelo.globalAccess.listaDeMateriales.get(indicepared),
                 modelo.globalAccess.listaDeMateriales.get(indicetecho) , 
                 modelo.globalAccess.listaDeMateriales.get(indicepiso));
-        return resultadoparcial + costosadicionales;
+        return Math.round((resultadoparcial + costosadicionales)*100)/100;
     }
     /////// FORMULAS DE CALCULO PARA LAS PROPORCIONES DE LA CONSTRUCCION
     

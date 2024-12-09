@@ -1479,6 +1479,10 @@ public class InterfazAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jBuscadorDeMatMouseClicked
 
     private void jBuscadorDeMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscadorDeMatActionPerformed
+        
+    }//GEN-LAST:event_jBuscadorDeMatActionPerformed
+
+    private void jBuscadorDeMatKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscadorDeMatKeyReleased
         // Filtrado de objetos en la lista que contienen la letra en cuestion
         boolean option = true;
         String texto = jBuscadorDeMat.getText();
@@ -1494,8 +1498,9 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
 
         jTableMateriales.getColumnModel().getColumn(0).setPreferredWidth(40);
-        jTableMateriales.getColumnModel().getColumn(1).setPreferredWidth(800);
-        jTableMateriales.getColumnModel().getColumn(2).setPreferredWidth(40);
+        jTableMateriales.getColumnModel().getColumn(1).setPreferredWidth(600);
+        jTableMateriales.getColumnModel().getColumn(2).setPreferredWidth(100);
+        jTableMateriales.getColumnModel().getColumn(3).setPreferredWidth(100);
         jTableMateriales.setAutoResizeMode(jTableMateriales.AUTO_RESIZE_LAST_COLUMN);
         jTableMateriales.setRowHeight(20);
         jScrollPaneMateriales.setVisible(true);
@@ -1505,10 +1510,6 @@ public class InterfazAdmin extends javax.swing.JFrame {
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
         jTableMateriales.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
-    }//GEN-LAST:event_jBuscadorDeMatActionPerformed
-
-    private void jBuscadorDeMatKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscadorDeMatKeyReleased
-        // TODO add your handling code here:
     }//GEN-LAST:event_jBuscadorDeMatKeyReleased
 
     private void jNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNombreActionPerformed
@@ -1640,8 +1641,9 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
 
         jTableMateriales.getColumnModel().getColumn(0).setPreferredWidth(40);
-        jTableMateriales.getColumnModel().getColumn(1).setPreferredWidth(800);
-        jTableMateriales.getColumnModel().getColumn(2).setPreferredWidth(40);
+        jTableMateriales.getColumnModel().getColumn(1).setPreferredWidth(600);
+        jTableMateriales.getColumnModel().getColumn(2).setPreferredWidth(100);
+        jTableMateriales.getColumnModel().getColumn(3).setPreferredWidth(100);
         jTableMateriales.setAutoResizeMode(jTableMateriales.AUTO_RESIZE_LAST_COLUMN);
         jTableMateriales.setRowHeight(20);
         jScrollPaneMateriales.setVisible(true);
