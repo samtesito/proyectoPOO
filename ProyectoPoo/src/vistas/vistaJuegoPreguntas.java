@@ -95,6 +95,7 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
         btnVolverInicio = new javax.swing.JLabel();
         pnlTurnoJugador = new javax.swing.JPanel();
         lblTurnoJugadores = new javax.swing.JLabel();
+        jPregunta = new javax.swing.JTextArea();
         jOpcionA = new javax.swing.JPanel();
         taOpcionA = new javax.swing.JTextArea();
         jOpcionB = new javax.swing.JPanel();
@@ -105,11 +106,10 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
         taOpcionD = new javax.swing.JTextArea();
         jImagen1 = new javax.swing.JPanel();
         jImagen2 = new javax.swing.JPanel();
-        jPregunta = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -172,12 +172,26 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
 
         jFondo.add(pnlTurnoJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 440, 70));
 
+        jPregunta.setEditable(false);
+        jPregunta.setBackground(new java.awt.Color(255, 242, 223));
+        jPregunta.setColumns(20);
+        jPregunta.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jPregunta.setForeground(new java.awt.Color(123, 58, 0));
+        jPregunta.setLineWrap(true);
+        jPregunta.setRows(5);
+        jPregunta.setText("Pregunta sacada de la base de datos");
+        jPregunta.setWrapStyleWord(true);
+        jPregunta.setBorder(null);
+        jPregunta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPregunta.setFocusable(false);
+        jFondo.add(jPregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 630, 120));
+
         jOpcionA.setBackground(new java.awt.Color(255, 87, 87));
 
         taOpcionA.setEditable(false);
         taOpcionA.setBackground(new java.awt.Color(255, 87, 87));
         taOpcionA.setColumns(20);
-        taOpcionA.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        taOpcionA.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
         taOpcionA.setLineWrap(true);
         taOpcionA.setRows(5);
         taOpcionA.setWrapStyleWord(true);
@@ -214,7 +228,7 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
         taOpcionB.setEditable(false);
         taOpcionB.setBackground(new java.awt.Color(140, 82, 255));
         taOpcionB.setColumns(20);
-        taOpcionB.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        taOpcionB.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
         taOpcionB.setLineWrap(true);
         taOpcionB.setRows(5);
         taOpcionB.setWrapStyleWord(true);
@@ -251,7 +265,7 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
         taOpcionC.setEditable(false);
         taOpcionC.setBackground(new java.awt.Color(126, 217, 87));
         taOpcionC.setColumns(20);
-        taOpcionC.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        taOpcionC.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
         taOpcionC.setLineWrap(true);
         taOpcionC.setRows(5);
         taOpcionC.setWrapStyleWord(true);
@@ -288,7 +302,7 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
         taOpcionD.setEditable(false);
         taOpcionD.setBackground(new java.awt.Color(255, 189, 89));
         taOpcionD.setColumns(20);
-        taOpcionD.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        taOpcionD.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
         taOpcionD.setLineWrap(true);
         taOpcionD.setRows(5);
         taOpcionD.setWrapStyleWord(true);
@@ -348,12 +362,7 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
         );
 
         jFondo.add(jImagen2, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 180, -1, 230));
-
-        jPregunta.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jPregunta.setForeground(new java.awt.Color(123, 58, 0));
-        jPregunta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPregunta.setText("Pregunta sacada de la base de datos");
-        jFondo.add(jPregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 660, 88));
+        jFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 290, -1, -1));
 
         getContentPane().add(jFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -429,7 +438,8 @@ public class vistaJuegoPreguntas extends javax.swing.JFrame {
     private javax.swing.JPanel jOpcionB;
     private javax.swing.JPanel jOpcionC;
     private javax.swing.JPanel jOpcionD;
-    private javax.swing.JLabel jPregunta;
+    private javax.swing.JTextArea jPregunta;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTurnoJugadores;
     private javax.swing.JPanel pnlTurnoJugador;
     private javax.swing.JTextArea taOpcionA;

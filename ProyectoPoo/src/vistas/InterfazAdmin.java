@@ -1118,6 +1118,8 @@ public class InterfazAdmin extends javax.swing.JFrame {
         }
         presupuesto.setFont(fuentenegrita);
         jError.setText("");
+        jCostosAdicionales.setText("0");
+        jResultado.setText(".  .  .");
         
         jSeleccionarMaterialSuelo.setModel(controladora.vistaManagement.setModeloCBMateriales());
         jSeleccionarMaterialTecho.setModel(controladora.vistaManagement.setModeloCBMateriales());
