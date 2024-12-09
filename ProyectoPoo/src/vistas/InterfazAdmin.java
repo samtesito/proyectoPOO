@@ -339,9 +339,19 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
         jBotonDeBuscarMat.setBackground(new java.awt.Color(78, 95, 23));
         jBotonDeBuscarMat.setPreferredSize(new java.awt.Dimension(50, 50));
+        jBotonDeBuscarMat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBotonDeBuscarMatMouseClicked(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/magnifier.png"))); // NOI18N
         jLabel2.setIconTextGap(0);
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jBotonDeBuscarMatLayout = new javax.swing.GroupLayout(jBotonDeBuscarMat);
         jBotonDeBuscarMat.setLayout(jBotonDeBuscarMatLayout);
@@ -392,7 +402,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
         jCostosAdicionales.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jCostosAdicionales.setForeground(new java.awt.Color(123, 58, 0));
-        jCostosAdicionales.setText(". . .");
+        jCostosAdicionales.setText("0");
         jCostosAdicionales.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jCostosAdicionalesMouseClicked(evt);
@@ -1107,6 +1117,7 @@ public class InterfazAdmin extends javax.swing.JFrame {
                 break;
         }
         presupuesto.setFont(fuentenegrita);
+        jError.setText("");
         
         jSeleccionarMaterialSuelo.setModel(controladora.vistaManagement.setModeloCBMateriales());
         jSeleccionarMaterialTecho.setModel(controladora.vistaManagement.setModeloCBMateriales());
@@ -1417,16 +1428,17 @@ public class InterfazAdmin extends javax.swing.JFrame {
 
     private void jCalcularPresupuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCalcularPresupuestoActionPerformed
         try{
+            jError.setText("");
             controladora.Presupuesto presup = new controladora.Presupuesto();
             if(jSeleccionarMaterialSuelo.getSelectedIndex()>modelo.globalAccess.listaDeMateriales.size() || jSeleccionarMaterialTecho.getSelectedIndex()>modelo.globalAccess.listaDeMateriales.size() || jSeleccionarMaterialSuelo.getSelectedIndex()>modelo.globalAccess.listaDeMateriales.size() || jSeleccionarMaterialSuelo.getSelectedIndex()<0 || jSeleccionarMaterialTecho.getSelectedIndex()<0 || jSeleccionarMaterialSuelo.getSelectedIndex()<0){
                 throw new ArrayIndexOutOfBoundsException("¡Error! Debe seleccionar opciones validas.");
             }
             String resultado = String.valueOf(presup.calcularPresupuesto(jSeleccionarMaterialSuelo, jSeleccionarMaterialTecho, jSeleccionarMaterialSuelo, jCostosAdicionales));
-            jResultado.setText(String.valueOf(resultado));
-        }catch (InputMismatchException excepcion){
+            jResultado.setText(String.valueOf(resultado)+" Bs.");
+        }catch (NumberFormatException excepcion){
             jError.setText("¡Error! Los costos adicionales sólo pueden ser numeros");
-        }catch (ArrayIndexOutOfBoundsException excepcion){
-            jError.setText(excepcion.getLocalizedMessage());
+        }catch (ArrayIndexOutOfBoundsException excepcion2){
+            jError.setText(excepcion2.getLocalizedMessage());
         }
     }//GEN-LAST:event_jCalcularPresupuestoActionPerformed
 
@@ -1463,11 +1475,36 @@ public class InterfazAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAgregarMaterialActionPerformed
 
     private void jBuscadorDeMatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBuscadorDeMatMouseClicked
-        // TODO add your handling code here:
+        jBuscadorDeMat.setText("");
     }//GEN-LAST:event_jBuscadorDeMatMouseClicked
 
     private void jBuscadorDeMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscadorDeMatActionPerformed
-        // TODO add your handling code here:
+        // Filtrado de objetos en la lista que contienen la letra en cuestion
+        boolean option = true;
+        String texto = jBuscadorDeMat.getText();
+        
+        
+        jTableMateriales.setModel(controladora.vistaManagement.setModeloTablaMateriales(option,texto));
+        JTableHeader tableHeader = jTableMateriales.getTableHeader();
+        Font headerFont = new Font("Arial", Font.BOLD, 18);
+        float[] hsbColor = new float[3];
+        Color.RGBtoHSB(163, 58, 0, hsbColor);
+        tableHeader.setForeground(Color.getHSBColor(hsbColor[0],hsbColor[1],hsbColor[2]));
+        tableHeader.setFont(headerFont);
+
+
+        jTableMateriales.getColumnModel().getColumn(0).setPreferredWidth(40);
+        jTableMateriales.getColumnModel().getColumn(1).setPreferredWidth(800);
+        jTableMateriales.getColumnModel().getColumn(2).setPreferredWidth(40);
+        jTableMateriales.setAutoResizeMode(jTableMateriales.AUTO_RESIZE_LAST_COLUMN);
+        jTableMateriales.setRowHeight(20);
+        jScrollPaneMateriales.setVisible(true);
+        jTableMateriales.setVisible(true);
+
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        jTableMateriales.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
     }//GEN-LAST:event_jBuscadorDeMatActionPerformed
 
     private void jBuscadorDeMatKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscadorDeMatKeyReleased
@@ -1582,6 +1619,39 @@ public class InterfazAdmin extends javax.swing.JFrame {
         vMan.guardarMaterial();
         menu2MouseClicked(null);
     }//GEN-LAST:event_BorrarActionPerformed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jBotonDeBuscarMatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBotonDeBuscarMatMouseClicked
+        // Filtrado de objetos en la lista que contienen la letra en cuestion
+        boolean option = true;
+        String texto = jBuscadorDeMat.getText();
+        
+        
+        jTableMateriales.setModel(controladora.vistaManagement.setModeloTablaMateriales(option,texto));
+        JTableHeader tableHeader = jTableMateriales.getTableHeader();
+        Font headerFont = new Font("Arial", Font.BOLD, 18);
+        float[] hsbColor = new float[3];
+        Color.RGBtoHSB(163, 58, 0, hsbColor);
+        tableHeader.setForeground(Color.getHSBColor(hsbColor[0],hsbColor[1],hsbColor[2]));
+        tableHeader.setFont(headerFont);
+
+
+        jTableMateriales.getColumnModel().getColumn(0).setPreferredWidth(40);
+        jTableMateriales.getColumnModel().getColumn(1).setPreferredWidth(800);
+        jTableMateriales.getColumnModel().getColumn(2).setPreferredWidth(40);
+        jTableMateriales.setAutoResizeMode(jTableMateriales.AUTO_RESIZE_LAST_COLUMN);
+        jTableMateriales.setRowHeight(20);
+        jScrollPaneMateriales.setVisible(true);
+        jTableMateriales.setVisible(true);
+
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        jTableMateriales.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+    }//GEN-LAST:event_jBotonDeBuscarMatMouseClicked
 
     /**
      * @param args the command line arguments

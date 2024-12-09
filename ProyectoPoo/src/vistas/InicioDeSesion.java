@@ -173,6 +173,14 @@ public class InicioDeSesion extends javax.swing.JFrame {
         jPasswordField1.setForeground(new java.awt.Color(123, 58, 0));
         jPasswordField1.setToolTipText("");
         jPasswordField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordField1KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jPasswordField1KeyTyped(evt);
+            }
+        });
         Fondo.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 377, 648, 49));
 
         lInvalido.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -222,6 +230,14 @@ public class InicioDeSesion extends javax.swing.JFrame {
         this.dispose();
         controladora.vistaManagement.loadStart();       
     }//GEN-LAST:event_VolverAtrasMouseClicked
+
+    private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1KeyPressed
+
+    private void jPasswordField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1KeyTyped
 
     /**
      * @param args the command line arguments
