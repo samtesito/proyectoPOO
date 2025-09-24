@@ -1,5 +1,5 @@
 # PROYECTO COIL - SEM. 2025-15: 
-### *Un desarrollo orientado a objetos*
+## *Un desarrollo orientado a objetos*
 
 En este repositorio se presenta la combinación de un juego estilo quiz (inspirado en Kahoot) y un generador de presupuestos de materiales de construcción. Ambas propuestas fueron desarrolladas en Java y combinadas dentro de una única aplicación de escritorio, tal como le fue solicitado al equipo de desarrollo. 
 
